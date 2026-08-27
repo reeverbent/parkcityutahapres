@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Corporate Event DJ — Park City &amp; Deer Valley | DJ Cam Reeve</title>
+<meta name="description" content="Après energy for corporate afterparties, holiday parties and galas in Park City and Deer Valley. Transparent pricing. Check your date.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://parkcityutahapres.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KGL8CX4M');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/borders.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/themes.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/tokens/base.css">
+  <link rel="stylesheet" href="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/styles.css">
+  <script src="_ds/dj-cam-reeve-design-system-bbc5c645-9020-48e6-87fa-d2da1422a0ab/_ds_bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .theme-corporate { --text-muted: #8A8A8A; }
+    .om-skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--dcr-white); color: var(--dcr-black); padding: 12px 20px; font-family: var(--font-wide); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; }
+    .om-skip:focus { left: 0; }
+    #production, #pricing, #results, #date { scroll-margin-top: 84px; }
+    body { margin: 0; background: #000; }
+    html, body { overflow-x: clip; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--dcr-white); }
+
+    /* Venue row holds one line only where it genuinely fits; below that it
+       wraps rather than spilling past the viewport edge. */
+    @media (max-width: 960px) {
+      [data-m="venues"] { flex-wrap: wrap !important; justify-content: center !important; row-gap: 8px !important; column-gap: 14px !important; }
+    }
+
+    /* ---- Mobile. Layout only; nothing above 900px changes. ---- */
+    @media (max-width: 900px) {
+      .theme-corporate {
+        --page-pad: 20px;
+        --section-y: var(--sp-8);
+        --section-y-tight: var(--sp-7);
+        --section-y-loose: var(--sp-9);
+        --fs-display-1: 46px;
+        --fs-display-2: 40px;
+        --fs-display-3: 34px;
+        --fs-display-4: 30px;
+        --grid-gap: 20px;
+      }
+      [style*="grid-template-columns: repeat(2"],
+      [style*="grid-template-columns: repeat(3"],
+      [style*="grid-template-columns: 1.15fr"],
+      [style*="grid-template-columns: 0.8fr"] { grid-template-columns: 1fr !important; }
+
+      #top { min-height: auto !important; }
+      #top [data-m="hero-pad"] { padding-top: var(--sp-7) !important; padding-bottom: var(--sp-7) !important; row-gap: var(--sp-5) !important; }
+      #top [data-m="hero-trio"] { row-gap: 14px !important; margin-top: 0 !important; }
+      #top [data-m="hero-trio"] > div { gap: 6px !important; padding-top: 10px !important; }
+      #top h1 { white-space: normal !important; font-size: clamp(34px, 10vw, 56px) !important; }
+      [data-m="cam"] { display: none !important; }
+
+      [data-m="venues"] > span { font-size: 11px !important; }
+
+      #pricing [style*="min-height"] { min-height: 0 !important; }
+
+      h2[style*="font-size: 40px"] { font-size: 30px !important; }
+      h2[style*="max-width: 22ch"] { font-size: 32px !important; }
+
+      header nav { gap: var(--sp-5) !important; }
+      header nav a[style*="inline-flex"] { padding: 16px 18px !important; }
+      header nav a:not([style*="inline-flex"]) { padding-block: 14px !important; }
+
+      #date input, #date select, #date textarea { font-size: 16px !important; }
+
+      /* 44px minimum on every tappable thing */
+      #pricing button, #pricing a[style*="inline-flex"] { min-height: 46px !important; }
+      footer a { min-height: 44px !important; display: inline-flex !important; align-items: center !important; }
+      #top button { min-height: 44px !important; }
+
+      /* the 10px label tier is too small to read on a phone */
+      [style*="font-size: 10px"] { font-size: 11px !important; }
+    }
+    @media (max-width: 560px) {
+      header { padding: 14px var(--page-pad) !important; }
+      header nav a:not([style*="inline-flex"]) { display: none !important; }
+      #top h1 { font-size: clamp(30px, 10.5vw, 44px) !important; }
+    }
+  </style>
+</helmet>
+
+<div class="theme-corporate" style="background: var(--dcr-black); color: var(--text-primary); min-height: 100vh;">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGL8CX4M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <a href="#production" class="om-skip">Skip to content</a>
+
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SiteHeader" hint-size="100%,72px" asset-base="assets/logo" logo-colorway="coral" cta="Check your date" cta-href="#date" nav="{{ nav }}"></x-import>
+
+  <!-- HERO -->
+  <section id="top" data-screen-label="Hero" style="position: relative; min-height: min(90vh, 880px); display: flex; align-items: flex-end; overflow: hidden;">
+    <div style="position: absolute; inset: 0; overflow: hidden; background: var(--dcr-black);">
+      <video ref="{{ videoRef }}" src="assets/imagery/hero-apres.mp4" poster="assets/imagery/hero-poster.jpg" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Background footage from a DJ Cam Reeve event" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.52) saturate(0.9);"></video>
+      <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4);"></div>
+      <button type="button" onClick="{{ toggleVideo }}" aria-label="{{ videoBtnLabel }}" style="position: absolute; right: 20px; bottom: 20px; z-index: 4; display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.6); border: 1px solid var(--rule); color: var(--dcr-white); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.16em; padding: 9px 14px; cursor: pointer;" style-hover="border-color: var(--accent); color: var(--accent);">{{ videoBtnLabel }}</button>
+    </div>
+
+    
+
+    <div data-m="hero-pad" style="position: relative; width: 100%; max-width: var(--grid-max); margin-inline: auto; padding: var(--sp-10) clamp(16px, 2vw, 24px) var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-6);">
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md">Corporate Event DJ · Park City &amp; Deer Valley</x-import>
+
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.DisplayHeading" hint-size="100%,120px" level="1" measure="{{ false }}" dc-props="{{ heroHeadlineStyle }}">YOUR EVENT DESERVES <span style="color: var(--accent)">{{ categoryWord }}</span> ENERGY</x-import>
+
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,28px" size="lg" tone="primary">Après. House, EDM, après-ski energy.</x-import>
+
+      <div data-m="hero-trio" style="position: relative; z-index: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); max-width: 940px; margin-top: var(--sp-4);">
+        <div style="display: flex; flex-direction: column; gap: var(--sp-3); border-top: 1px solid var(--accent-line); padding-top: var(--sp-4);">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">The room</x-import>
+          <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">Energy lasting well after the bar closes.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-3); border-top: 1px solid var(--accent-line); padding-top: var(--sp-4);">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">Your workload</x-import>
+          <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">Hands off, or you help curate the energy.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-3); border-top: 1px solid var(--accent-line); padding-top: var(--sp-4);">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">The risk</x-import>
+          <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">Something unique that people talk about for years.</div>
+        </div>
+      </div>
+
+      <div style="position: relative; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-6); margin-top: var(--sp-5);">
+        <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="auto,60px" size="lg" href="#date">Check your date</x-import>
+        <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-secondary); max-width: 34ch;">Checking a date costs nothing and commits nothing. DJ Cam and his team respond within one business day.</div>
+      </div>
+    <img data-m="cam" src="assets/imagery/cam-cutout.png" alt="DJ Cam Reeve" style="position: absolute; top: 199px; height: 868px; width: 859px; z-index: 2; object-fit: contain; pointer-events: none; user-select: none; filter: brightness(1.05) contrast(1.05); left: 426px"></div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div style="border-block: 1px solid var(--rule); padding: var(--sp-5) 0; background: var(--surface-raised);">
+    <div style="width: 100%; max-width: var(--grid-max); margin-inline: auto; padding-inline: clamp(16px, 2vw, 24px); display: flex; flex-wrap: nowrap; align-items: center; gap: clamp(6px, 1.2vw, 28px);">
+      <div data-m="venues" style="flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: clamp(4px, 0.8vw, 20px);">
+        <sc-for list="{{ venueItems }}" as="item" hint-placeholder-count="7">
+          <span style="display: inline-flex; align-items: center; gap: clamp(6px, 0.9vw, 20px); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: clamp(9px, 0.78vw, 13px); letter-spacing: 0.02em; line-height: 1.3; white-space: nowrap; color: var(--text-primary);">{{ item.name }}<span style="color: var(--text-muted);">{{ item.sep }}</span></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEAR -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,320px" width="narrow" pad="tight" data-screen-label="The dead room">
+    <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.DisplayHeading" hint-size="100%,140px" level="2" measure="{{ false }}" style="font-size: 40px">TOO LOUD AND THEY WILL TAKE THE CONVERSATION ELSEWHERE</x-import>
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,26px" size="md" tone="secondary">Après is a talking room.</x-import>
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,52px" size="md" tone="secondary">It's a room where the music curates the space for people connecting for the first time, others letting loose, and some reconnecting and building relationships that keep growing. DJ Cam is your partner in building a night around your theme and the outcome you want.</x-import>
+    </div>
+  </x-import>
+
+  <!-- PROOF -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,620px" eyebrow="Proof" heading="LET THE MUSIC DO THE TALKING" level="2" top-rule="true" data-screen-label="Proof">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-7); align-items: stretch;">
+      <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
+        <div style="display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">EDM afterparty, High West Distillery</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Full room, peak hour</div>
+          </div>
+          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fedm-wedding-afterparty-high-west%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="EDM afterparty, High West Distillery"></iframe>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">Après-ski, The Vintage Room, The St. Regis</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Jams with Cam · 3/12/2023</div>
+          </div>
+          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fjams-with-cam-the-vintage-room-st-regis-apres-ski-3122023%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="Après ski, The Vintage Room, The St. Regis"></iframe>
+        </div>
+
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">Afternoon house vibes</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Daylight hours, talking room</div>
+          </div>
+          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fafternoon-house-vibes-20230328-182739%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="Afternoon house vibes"></iframe>
+        </div>
+
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+        <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">LET'S MAKE THE ENERGY ELECTRIC</div>
+        <div style="padding: 56.25% 0 0 0; position: relative; border: 1px solid var(--rule); background: var(--surface-raised);">
+          <iframe src="https://player.vimeo.com/video/1188499051?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ Cam Reeve | 2025 Recap Video"></iframe>
+        </div>
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">The air is electric, episode 2</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">With DJ Cam Reeve</div>
+          </div>
+          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fthe-air-is-electric-episode-2-wdj-cam-reeve%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="The air is electric, episode 2"></iframe>
+        </div>
+      </div>
+    </div>
+  </x-import>
+
+  <!-- RUN LIKE A PRODUCTION -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,900px" id="production" eyebrow="Pillar one" heading="HOW THE MUSIC GETS BUILT" level="2" texture="true" top-rule="true" data-screen-label="The music process">
+    <div style="display: flex; flex-direction: column; gap: var(--sp-6);">
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,26px" size="md" tone="secondary">The music is designed for your room before DJ Cam's load-in. You choose how involved you want to be.</x-import>
+
+      <!-- PROCESS MAP -->
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-6); align-items: stretch;">
+
+        <!-- PATH A -->
+        <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+          <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-3);">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">Boots Off · Hands-Off Approach</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-muted);">Four steps</div>
+          </div>
+
+          <div style="flex: 1; border: 1px solid var(--rule); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-muted); flex: none;">01</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">Quick phone call with the booking manager</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--rule); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-muted); flex: none;">02</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">Hands off</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--rule); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-muted); flex: none;">03</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">Final call / check-in</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--accent-line); background: var(--accent-wash); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent); flex: none;">04</div>
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">AND THEN WE PARTY</div>
+          </div>
+        </div>
+
+        <!-- PATH B -->
+        <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+          <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-bottom: 1px solid var(--accent-line); padding-bottom: var(--sp-3);">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--accent);">Boots On · Fully Involved</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-muted);">Five steps</div>
+          </div>
+
+          <div style="flex: 1; border: 1px solid var(--accent-line); border-left: 3px solid var(--accent); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent); flex: none;">01</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">Quick phone call with the booking manager — connect with DJ Cam if needed</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--accent-line); border-left: 3px solid var(--accent); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent); flex: none;">02</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">You build a Spotify list, 50 to 200 songs, plus anything that should never be played</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--accent-line); border-left: 3px solid var(--accent); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent); flex: none;">03</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">DJ Cam designs the show from it, using his own edits and remixes — reference, not setlist</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--accent-line); border-left: 3px solid var(--accent); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent); flex: none;">04</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.45; color: var(--text-secondary);">Final Zoom call</div>
+          </div>
+          <div style="flex: 1; border: 1px solid var(--accent-line); background: var(--accent-wash); padding: var(--sp-4) var(--sp-5); display: flex; align-items: center; gap: var(--sp-4);">
+            <div style="font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent); flex: none;">05</div>
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 24px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">AND THEN WE PARTY</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </x-import>
+
+  <!-- RESULTS -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,700px" id="results" top-rule="true" data-screen-label="Results">
+    <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--sp-8); align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: var(--sp-6);">
+        <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md">Results</x-import>
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: var(--fs-display-3); line-height: 0.94; letter-spacing: var(--ls-display); color: var(--text-primary);">NOBODY LEFT EARLY.</h2>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-5); border: 1px solid var(--rule); border-left: 3px solid var(--dcr-coral); background: var(--surface-raised); padding: var(--sp-6);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-4); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-4);">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Highlights from a 5-star review</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--dcr-coral);">Connor</div>
+          </div>
+
+          <div style="display: flex; gap: var(--sp-4);">
+            <div style="flex: none; width: 3px; align-self: stretch; background: var(--rule);"></div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-primary); max-width: var(--measure-body);">“The guests didn’t leave the dance floor the ENTIRE time he was on stage. He brought our vision to life and gave us a throwback to the years when AVICII brought the place down.”</div>
+          </div>
+
+          <div style="display: flex; gap: var(--sp-4);">
+            <div style="flex: none; width: 3px; align-self: stretch; background: var(--rule);"></div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-primary); max-width: var(--measure-body);">“Professional, kind, responsive and worked with our artist requests and most importantly our no-play list.”</div>
+          </div>
+
+          <div style="display: flex; gap: var(--sp-4);">
+            <div style="flex: none; width: 3px; align-self: stretch; background: var(--rule);"></div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-primary); max-width: var(--measure-body);">“Worth every penny and more. We will be hiring his services again and attending his events at the Deer Valley Vintage Room for years to come.”</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
+        <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md" tone="muted">Event types</x-import>
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-4); font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary);">Retreats and afterparties</div>
+          <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-4); font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary);">Holiday parties</div>
+          <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-4); font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary);">Galas and awards nights</div>
+          <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-4); font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary);">Brand activations and openings</div>
+          <div style="border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: var(--sp-4); font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary);">Socials</div>
+        </div>
+      </div>
+    </div>
+
+  </x-import>
+
+  <!-- RISK REVERSAL BAND -->
+  <div style="border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: var(--sp-7) var(--page-pad);">
+    <div style="max-width: var(--grid-max); margin-inline: auto; display: flex; flex-direction: column; gap: var(--sp-6);">
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md" tone="muted">What to know before pricing</x-import>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6) var(--sp-8);">
+        <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+          <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">The date is locked</div>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.5; color: var(--text-secondary);">A signed contract and $1,000 booking fee reserve it. Nothing is held on a handshake.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+          <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">Liability insurance</div>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.5; color: var(--text-secondary);">Certificate of insurance on file and sent to your venue on request.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+          <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">Paperwork handled</div>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.5; color: var(--text-secondary);">W9 and contract sent as soon as you give the go-ahead.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+          <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">No substitutions</div>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.5; color: var(--text-secondary);">The DJ you booked is the DJ who shows up. Ask for the stories.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+          <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">Already approved</div>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.5; color: var(--text-secondary);">Montage Deer Valley, Deer Valley Resort, High West Distillery, The St. Regis, The Lodge at Blue Sky, The Kimball Terrace. We already know the load-in.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
+          <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">Partner</div>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.5; color: var(--text-secondary);">We are here to be a partner from start to finish. From the First inquiry to the last note on the dance floor.&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPEL -->
+  <sc-if value="{{ showRepel }}" hint-placeholder-val="{{ true }}">
+    <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,420px" pad="tight" top-rule="true" data-screen-label="Repel">
+      <div style="display: flex; flex-direction: column; gap: var(--sp-8);">
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: 56px; line-height: 0.94; letter-spacing: var(--ls-display); color: var(--text-primary); max-width: 22ch;">IF THE LOWEST BID WINS, THIS ISN'T IT.</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--dcr-coral); border-bottom: 1px solid var(--coral-line); padding-bottom: var(--sp-3);">A good fit</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-4);">The room is supposed to feel like something.</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-4);">You want someone who reads the room and adapts live.</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">You want guests to stay.</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-3);">Not a fit</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-muted); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-4);">The brief is background music and a microphone.</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-muted); border-bottom: 1px solid var(--rule); padding-bottom: var(--sp-4);">The goal is the safest possible choice.</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-muted);">The lowest bid wins the job.</div>
+          </div>
+        </div>
+      </div>
+    </x-import>
+  </sc-if>
+
+  <!-- PRICING -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,640px" id="pricing" eyebrow="Transparent pricing" heading="A REFRESHING WAY TO GET A PRICE" level="2" top-rule="true" data-screen-label="Pricing">
+    <div style="display: flex; flex-direction: column; gap: var(--sp-7);">
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,26px" size="md" tone="secondary">Transparency from the beginning. Pick the level of involvement you want.</x-import>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); align-items: stretch;">
+        <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); border-top: 1px solid var(--rule); background: var(--surface-raised);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Boots Off</div>
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$3200</div>
+            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Afterparty Package</div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">2-hour performance</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Up to 150 people</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">1 wireless mic</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20 uplights, 2 moving heads</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Hands-off music approach</div>
+            </div>
+          </div>
+          <div style="margin-top: auto; padding-top: var(--sp-5);">
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOff }}">Check your date</x-import>
+          </div>
+        </div>
+        <div style="position: relative; display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--accent-line); border-top: 4px solid var(--accent); background: var(--accent-wash);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
+            <div style="align-self: flex-start; background: var(--accent); color: var(--accent-on); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; padding: 5px 10px; margin-bottom: var(--sp-2);">Most popular approach</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--accent);">Boots On</div>
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$4000</div>
+            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Standard DJ Package</div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">3-hour performance</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Up to 200</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">2 wireless mics</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20 uplights, 2 moving heads, 6 bar lights</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Involved in music curation</div>
+            </div>
+          </div>
+          <div style="margin-top: auto; padding-top: var(--sp-5);">
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="accent" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOn }}">Check your date</x-import>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); background: var(--surface-raised);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">CUSTOM BOOTS</div>
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$4500–20k</div>
+            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Detailed Approach</div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Customized performance time</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">200 –2,000 people</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Wireless mics as needed</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20–100 uplights, 1–60 pinspots, stage wash, pixel bars, and more</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Involved in music curation</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Enhancements</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Karaoke, projectors and screens, pipe &amp; drape, TVs, staging, video wall, confidence monitors, and more</div>
+            </div>
+          </div>
+          <div style="margin-top: auto; padding-top: var(--sp-5);">
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickCustom }}">Check your date</x-import>
+          </div>
+        </div>
+      </div>
+    </div>
+  </x-import>
+
+  <!-- QUESTIONS PLANNERS ASK -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,560px" eyebrow="Before you ask" heading="GET ANSWERS" level="2" top-rule="true" data-screen-label="FAQ">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--sp-8); align-content: start;">
+      <sc-for list="{{ faq }}" as="item" hint-placeholder-count="10">
+        <div style="border-top: 1px solid var(--rule); align-self: start;">
+          <div onClick="{{ item.toggle }}" role="button" tabIndex="0" style="display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-5); padding-block: var(--sp-4); padding-inline: var(--sp-4); margin-inline: calc(var(--sp-4) * -1); cursor: pointer; background: {{ item.rowBg }}; box-shadow: {{ item.rowBar }};" style-hover="background: var(--surface-raised);">
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--accent);">{{ item.q }}</div>
+            <div style="flex: none; font-family: var(--font-text); font-size: 20px; line-height: 1; color: var(--text-muted);">{{ item.sign }}</div>
+          </div>
+          <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding-bottom: var(--sp-5); max-width: var(--measure-body); white-space: pre-line; font-family: var(--font-text); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-secondary);">{{ item.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <div style="grid-column: 1 / -1; border-top: 1px solid var(--rule);"></div>
+    </div>
+  </x-import>
+
+  <!-- CLOSE -->
+  
+
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,900px" id="date" eyebrow="One step" heading="CHECK YOUR DATE" level="2" top-rule="true" data-screen-label="Check your date">
+    <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--sp-9); align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
+        <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,52px" size="md" tone="primary">Send the date. Cam and his team take it from there.</x-import>
+
+        <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+          <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-top: 1px solid var(--rule); padding-top: var(--sp-4);">
+            <div style="flex: none; font-family: var(--font-display); font-size: 22px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent);">01</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">You send the date.</div>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-top: 1px solid var(--rule); padding-top: var(--sp-4);">
+            <div style="flex: none; font-family: var(--font-display); font-size: 22px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent);">02</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">Cam and his team confirm whether it is open, within one business day.</div>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: var(--sp-4);">
+            <div style="flex: none; font-family: var(--font-display); font-size: 22px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent);">03</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">If it is open, you get a quote with the contract attached.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Card" hint-size="100%,220px" pad="loose" accent-bar="true" role="status" aria-live="polite">
+            <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md">Received</x-import>
+              <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-head-3); line-height: 1.5; color: var(--text-primary);">DJ Cam has your date. You will hear back within one business day.</div>
+            </div>
+          </x-import>
+        </sc-if>
+
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" onPointerDown="{{ markHuman }}" onKeyDown="{{ markHuman }}" onChange="{{ markHuman }}" name="corporate-date-check" method="POST" style="display: flex; flex-direction: column; gap: var(--sp-6);">
+            <input type="hidden" name="form-name" value="corporate-date-check">
+
+            <div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
+              <label for="company-website">Company website</label>
+              <input id="company-website" name="company_website" type="text" tabIndex="-1" autoComplete="off">
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-secondary);">Full name (person inquiring) <span style="color: var(--dcr-coral);">*</span></div>
+              <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5);">
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="first-name" name="first_name" label="First" required="{{ true }}"></x-import>
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="last-name" name="last_name" label="Last" required="{{ true }}"></x-import>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5);">
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Select" hint-size="100%,74px" id="type" name="event_type" label="Event type *" options="{{ eventTypes }}" value="{{ eventType }}" onChange="{{ onEventTypeChange }}"></x-import>
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Select" hint-size="100%,74px" id="package" name="package" label="Package" options="{{ packages }}" value="{{ pkg }}" onChange="{{ onPkgChange }}"></x-import>
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="phone" name="phone" label="Phone *" type="tel" placeholder="(999) 999-9999"></x-import>
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="email" name="email" label="Email *" type="email" required="{{ true }}"></x-import>
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="date-field" name="event_date" label="Date *" type="date" required="{{ true }}"></x-import>
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="venue" name="location_name" label="Location name (venue – city, state) *" required="{{ true }}"></x-import>
+            </div>
+
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="found" name="how_found" label="How did you find DJ Cam?"></x-import>
+
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Select" hint-size="100%,74px" id="dancefloor" name="dance_floor" label="Best describes your dance floor" options="{{ danceFloors }}" value="{{ danceFloor }}" onChange="{{ onDanceFloorChange }}"></x-import>
+
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Textarea" hint-size="100%,180px" id="notes" name="notes" rows="5" label="Anything DJ Cam should know before we connect?"></x-import>
+
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-5); margin-top: var(--sp-2);">
+              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="auto,60px" size="lg" as="button" type="submit">Check your date</x-import>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-muted);">Response within one business day.</div>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+
+    <sc-if value="{{ showVendorCta }}" hint-placeholder-val="{{ true }}">
+      
+    </sc-if>
+  </x-import><footer style="border-top: 1px solid var(--rule); padding: var(--sp-9) var(--page-pad) var(--sp-7); display: flex; flex-direction: column; gap: var(--sp-8);">
+    <div style="max-width: var(--grid-max); margin-inline: auto; width: 100%; display: flex; flex-direction: column; gap: var(--sp-8);">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--sp-8); justify-content: space-between; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
+          <img src="assets/logo/dj-cam-reeve-coral.png" alt="DJ Cam Reeve" style="width: 180px; height: auto; display: block;">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="secondary">Après sets with festival energy</x-import>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">Contact</x-import>
+          <a href="tel:+14357706917" style="font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary); text-decoration: none;">(435) 770-6917</a>
+          <a href="{{ mailHref }}" style="font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary); text-decoration: none;">{{ mailText }}</a>
+          <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-muted);">Park City, Utah</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--sp-4); align-items: flex-start;">
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">One step</x-import>
+          <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="auto,48px" size="md" href="#date">Check your date</x-import>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: var(--sp-5); justify-content: space-between; border-top: 1px solid var(--rule); padding-top: var(--sp-5);">
+        <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">© DJ Cam Reeve</x-import>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--sp-6);">
+          <a href="https://djcamreeve.com/privacy-policy/" style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted); text-decoration: none;">Privacy policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;categoryWord&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;APRÈS&quot;,&quot;FESTIVAL&quot;],&quot;default&quot;:&quot;APRÈS&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;A/B test&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form&quot;},&quot;showRepel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showVendorCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { playing: false, progress: 0, sent: false, openFaq: 0, pkg: '', videoPaused: false };
+
+  componentWillUnmount() { clearInterval(this._t); }
+
+  togglePlay = () => {
+    const next = !this.state.playing;
+    clearInterval(this._t);
+    if (next) {
+      this._t = setInterval(() => {
+        this.setState(s => {
+          const p = s.progress + 0.01;
+          if (p >= 1) { clearInterval(this._t); return { progress: 0, playing: false }; }
+          return { progress: p };
+        });
+      }, 140);
+    }
+    this.setState({ playing: next });
+  };
+
+  FAQ = [
+    { q: "What Is Required To Book?", a: "A signed contract and booking fee of $1,000 are required to reserve the date." },
+    { q: "Any Hidden Fees?", a: "Our contract is detailed to protect you and us. We try to have a transparent approach from the beginning. You should have everything you need to make an educated decision fairly fast. When you get the official quote, the contract will be attached." },
+    { q: "What Do You Need From The Venue?", a: 'Two dedicated circuits for a standard ballroom setup, a load-in window, and the run of show. The booking manager or DJ Cam will connect with the venue to verify all details.' },
+    { q: "How Early Are You There?", a: 'Most events are a two-hour load-in, but we like to have access three hours before.' },
+    { q: "What If The Room Needs To Stay Quiet?", a: 'Volume is managed by zone and capped where the venue requires it. Speeches stay intelligible at the back table.' },
+    { q: "Does Cam Emcee? (MC)", a: "Yes.\n\nAn emcee plays a major role in the overall flow and professionalism of an event. DJ Cam is known for a clean, direct, and intentional emcee style that keeps events moving naturally without becoming overly “radio host” in tone or distracting.\n\nExamples include:\n\n— “Guests, it is now time to direct your attention to the stage.”\n— “It is my honor to introduce your speaker, John Smith.”\n\nThe goal is simple: clear communication, smooth transitions, and helping the event feel polished and organized." },
+    { q: "What Type Of Music Do You Play?", a: "Every event is different, and the music is fully tailored around the client’s vision, energy, and audience.\n\nMost clients provide a combination of:\n\n— Must-play songs\n— Suggested artists or genres\n— General vibes and expectations\n\nWith over 60,000 songs uploaded to Spotify every day, music discovery is constantly evolving. The most important part is creating a soundtrack that feels personal to you and your guests.\n\nThe DJ Cam style blends:\n\n— Open-format mixing\n— Re-drums\n— Mashups\n— Originals\n— Quick-hit transitions\n— Multiple genres and eras\n\nThe goal is to challenge the status quo, keep energy moving, and take the audience on a journey throughout the night." },
+    { q: "Do You Travel?", a: "Yes.\n\nDJ Cam regularly travels for weddings, corporate events, retreats, and private gatherings. Travel events may include talent fees and hard production costs such as flights, lodging, transportation, or additional production requirements. These details are discussed during planning meetings." },
+    { q: "Do You Work With Non-Profits And Fundraisers?", a: "DJ Cam is passionate about working with people who are doing good in the community. DJ Cam is trusted and paid by many organizations that host fundraisers from year to year and loves partnering with them to make their events profitable. DJ Cam loves working at fundraisers, including galas, concerts, silent auctions, and dances.\n\nLike any company, we are a for-profit business with hard costs required to make things happen. Please don’t hesitate to reach out for your next event, but keep in mind that DJ Cam does not provide free staging, lighting, sound, or DJ services. The most profitable fundraisers and non-profits we work with find value in impressing their donors with an entertainment experience worth spending money on. (Each event is custom quoted.)\n\n“I look forward to connecting with you.” — DJ Cam" },
+    { q: "Do You Provide A W9 And COI?", a: "Yes. As soon as you give us the word that you are moving forward, ask us for these and we will get them to you quickly." },
+    { q: "Do You Have Portable Power?", a: "Yes. We have power that can run our entire sound system and lighting for an event up to 6 hours." },
+    { q: "Do You Play Explicit Versions?", a: "The default is always clean edits.\n\nExplicit versions may be used upon request depending on the environment and type of event. Explicit music will not be played in public or family-oriented spaces unless specifically approved. As an FYI, explicit versions of some songs may not be available." },
+  ];
+
+  faqItems() {
+    const open = this.state.openFaq;
+    return this.FAQ.map((item, i) => ({
+      q: item.q,
+      a: item.a,
+      open: open === i,
+      sign: open === i ? '–' : '+',
+      rowBg: open === i ? 'var(--coral-wash)' : 'transparent',
+      rowBar: open === i ? 'inset 3px 0 0 0 var(--dcr-coral)' : 'none',
+      toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? null : i })),
+    }));
+  }
+
+  VENUES = [
+    'Montage Deer Valley', 'The Lodge at Blue Sky', 'Deer Valley Resort', 'Grand Hyatt',
+    'Park City Mountain', 'High West', 'The St. Regis',
+  ];
+
+  PACKAGES = [
+    'Not sure yet',
+    'Boots Off · Afterparty Package',
+    'Boots On · Standard DJ Package',
+    'Custom Boots · Detailed Approach',
+  ];
+
+  videoRef = React.createRef();
+
+  toggleVideo = () => {
+    const v = this.videoRef.current;
+    if (!v) return;
+    if (v.paused) { v.play(); this.setState({ videoPaused: false }); }
+    else { v.pause(); this.setState({ videoPaused: true }); }
+  };
+
+  pick = (pkg) => {
+    this.setState({ pkg });
+    window.location.hash = 'date';
+  };
+
+  DANCE_FLOORS = [
+    'Bangers Only 🔥',
+    'A Musical Journey 🎶',
+    'Friends & Family having a good time 🕺',
+    'Guests dancing their 🍑 off all night.',
+    'Dancing is not as important',
+    'Background Music (Toe Tappers)',
+    'House ❤️ Music',
+  ];
+
+  /* Assembled at runtime so the address never sits in the page source
+     as a harvestable string. */
+  mail() {
+    const user = ['o', 'f', 'n', 'I'].reverse().join('');
+    const host = 'moc.eveermacjd'.split('').reverse().join('');
+    return user + String.fromCharCode(64) + host;
+  }
+
+  /* Lead delivery inbox (info@reeverbent.net), obfuscated the same way.
+     Shared across all three landing pages so every lead lands in one place. */
+  leadTo() {
+    const user = ['o', 'f', 'n', 'i'].reverse().join('');
+    const host = 'ten.tnebreveer'.split('').reverse().join('');
+    return user + String.fromCharCode(64) + host;
+  }
+
+  /* FormSubmit AJAX endpoint built at runtime. A formEndpoint prop other
+     than '/' (e.g. a Zapier catch hook) overrides it without a rebuild. */
+  leadEndpoint() {
+    const custom = this.props.formEndpoint;
+    if (custom && custom !== '/') return custom;
+    return 'https://formsubmit.co/ajax/' + this.leadTo();
+  }
+
+  formReadyAt = Date.now();
+  humanTouch = false;
+  markHuman = () => { this.humanTouch = true; };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    /* Three quiet checks: an off-screen field only a bot fills, a minimum
+       time on the form, and at least one real input event. A failure shows
+       the same success state and posts nothing. */
+    const trap = form.elements.company_website;
+    const failed = (trap && trap.value !== '')
+      || (Date.now() - this.formReadyAt) < 2500
+      || !this.humanTouch;
+
+    if (failed) { this.setState({ sent: true }); return; }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'date_check_submit', form_name: 'corporate-date-check' });
+
+    const data = new FormData(form);
+    data.delete('company_website');
+    data.append('human_verified', 'true');
+    data.append('page_source', 'corporate-apres · parkcityutahapres.com');
+    data.append('_subject', 'New lead — Corporate Après (parkcityutahapres.com)');
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+
+    fetch(this.leadEndpoint(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+      body: new URLSearchParams(data).toString(),
+    }).catch(() => {});
+
+    this.setState({ sent: true });
+  };
+
+  renderVals() {
+    return {
+      categoryWord: this.props.categoryWord ?? 'APRÈS',
+      mailText: this.mail(),
+      mailHref: 'mailto:' + this.mail(),
+      markHuman: this.markHuman,
+      heroImage: this.props.heroImage || 'assets/imagery/hero-corporate.jpg',
+      heroFigureStyle: { style: { height: '100%' } },
+      videoRef: this.videoRef,
+      toggleVideo: this.toggleVideo,
+      videoBtnLabel: this.state.videoPaused ? 'Play video' : 'Pause video',
+      packages: this.PACKAGES,
+      pkg: this.state.pkg || 'Not sure yet',
+      onPkgChange: (e) => this.setState({ pkg: e.target.value }),
+      eventType: this.state.eventType || 'Corporate event',
+      onEventTypeChange: (e) => this.setState({ eventType: e.target.value }),
+      danceFloors: this.DANCE_FLOORS,
+      danceFloor: this.state.danceFloor || '',
+      onDanceFloorChange: (e) => this.setState({ danceFloor: e.target.value }),
+      pickBootsOff: () => this.pick(this.PACKAGES[1]),
+      pickBootsOn: () => this.pick(this.PACKAGES[2]),
+      pickCustom: () => this.pick(this.PACKAGES[3]),
+      heroHeadlineStyle: { style: { fontSize: 'min(104px, 6.1vw)', whiteSpace: 'nowrap' } },
+
+      showRepel: this.props.showRepel ?? true,
+      showVendorCta: this.props.showVendorCta ?? true,
+      onSubmit: this.onSubmit,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      nav: [
+        { label: 'Music Path', href: '#production' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'Results', href: '#results' },
+      ],
+      venueItems: this.VENUES.map((name, i) => ({ name, sep: i < this.VENUES.length - 1 ? '·' : '' })),
+      venues: [
+        'Montage Deer Valley', 'The Lodge at Blue Sky', 'Deer Valley Resort', 'Grand Hyatt Deer Valley',
+        'Park City Mountain', 'High West Distillery', 'The St. Regis',
+      ],
+
+      faq: this.faqItems(),
+      eventTypes: [
+        'Corporate event',
+        'Conference or incentive-trip afterparty',
+        'Holiday party',
+        'Gala or awards night',
+        'Brand activation or opening',
+        'Retreat',
+        'Something else',
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

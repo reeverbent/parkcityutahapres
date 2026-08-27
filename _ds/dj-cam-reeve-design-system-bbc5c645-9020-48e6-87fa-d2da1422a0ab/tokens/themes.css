@@ -1,0 +1,51 @@
+/* Accent themes. One dominant accent per piece, one supporting accent at most.
+   Spend ratio: ~70% black or white, ~20% dominant, ~10% support. */
+:root{
+  /* Default = wedding. Coral dominant, purple support. */
+  --accent:var(--dcr-coral);
+  --accent-support:var(--dcr-purple);
+  --accent-wash:var(--coral-wash);
+  --accent-line:var(--coral-line);
+  --accent-on:var(--dcr-black);      /* type colour that sits ON the accent */
+  --accent-press:#E2554D;            /* coral, value-darkened for press */
+}
+
+/* Weddings — warm, cinematic. */
+.theme-wedding{
+  --accent:var(--dcr-coral);
+  --accent-support:var(--dcr-purple);
+  --accent-wash:var(--coral-wash);
+  --accent-line:var(--coral-line);
+  --accent-on:var(--dcr-black);
+  --accent-press:#E2554D;
+}
+
+/* Corporate — cool, composed, competent. */
+.theme-corporate{
+  --accent:var(--dcr-ice-blue);
+  --accent-support:var(--dcr-coral);
+  --accent-wash:var(--ice-wash);
+  --accent-line:var(--ice-line);
+  --accent-on:var(--dcr-black);
+  --accent-press:#82C4E6;
+}
+
+/* Nightlife / après / open-format club work — highest energy. */
+.theme-nightlife{
+  --accent:var(--dcr-magenta);
+  --accent-support:var(--dcr-ice-blue);
+  --accent-wash:var(--magenta-wash);
+  --accent-line:var(--magenta-line);
+  --accent-on:var(--dcr-black);
+  --accent-press:#D601AE;
+}
+
+/* Cosmic / signature guidebook pairing — purple with coral. */
+.theme-cosmic{
+  --accent:var(--dcr-purple);
+  --accent-support:var(--dcr-coral);
+  --accent-wash:var(--purple-wash);
+  --accent-line:var(--purple-line);
+  --accent-on:var(--dcr-white);
+  --accent-press:#5A1B8C;
+}
