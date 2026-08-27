@@ -7,7 +7,6 @@
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://parkcityutahapres.com/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -42,6 +41,19 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: var(--dcr-white); }
 
+    /* Native date/time controls default to a black glyph, invisible on the dark field. */
+    input[type="date"], input[type="time"], input[type="datetime-local"], select { color-scheme: dark; }
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator,
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+
     /* Venue row holds one line only where it genuinely fits; below that it
        wraps rather than spilling past the viewport edge. */
     @media (max-width: 960px) {
@@ -63,6 +75,7 @@
       }
       [style*="grid-template-columns: repeat(2"],
       [style*="grid-template-columns: repeat(3"],
+      [style*="grid-template-columns: repeat(4"],
       [style*="grid-template-columns: 1.15fr"],
       [style*="grid-template-columns: 0.8fr"] { grid-template-columns: 1fr !important; }
 
@@ -119,8 +132,6 @@
       <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4);"></div>
       <button type="button" onClick="{{ toggleVideo }}" aria-label="{{ videoBtnLabel }}" style="position: absolute; right: 20px; bottom: 20px; z-index: 4; display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.6); border: 1px solid var(--rule); color: var(--dcr-white); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.16em; padding: 9px 14px; cursor: pointer;" style-hover="border-color: var(--accent); color: var(--accent);">{{ videoBtnLabel }}</button>
     </div>
-
-    
 
     <div data-m="hero-pad" style="position: relative; width: 100%; max-width: var(--grid-max); margin-inline: auto; padding: var(--sp-10) clamp(16px, 2vw, 24px) var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-6);">
       <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md">Corporate Event DJ · Park City &amp; Deer Valley</x-import>
@@ -384,12 +395,28 @@
     </x-import>
   </sc-if>
 
+  <!-- APRÈS LIVE FUSION -->
+  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,520px" id="live" eyebrow="Live performers" heading="APRÈS LIVE FUSION" level="2" top-rule="true" data-screen-label="Après Live Fusion">
+    <div style="display: flex; flex-direction: column; gap: var(--sp-7);">
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,26px" size="md" tone="secondary">A live player on top of the set. Same night, same arc, one more thing the room did not expect.</x-import>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-6); align-items: start;">
+        <div style="padding: 56.25% 0 0 0; position: relative; border: 1px solid var(--rule); background: var(--ink-2);">
+          <iframe src="https://player.vimeo.com/video/1132325763?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ &amp; Sax (Intro + Live studio Feed)"></iframe>
+        </div>
+        <div style="padding: 56.25% 0 0 0; position: relative; border: 1px solid var(--rule); background: var(--ink-2);">
+          <iframe src="https://player.vimeo.com/video/1221916024?h=68b4bf0cd4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ + Sax | Intro + Studio Live Feed"></iframe>
+        </div>
+      </div>
+    </div>
+  </x-import>
+
   <!-- PRICING -->
   <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,640px" id="pricing" eyebrow="Transparent pricing" heading="A REFRESHING WAY TO GET A PRICE" level="2" top-rule="true" data-screen-label="Pricing">
     <div style="display: flex; flex-direction: column; gap: var(--sp-7);">
       <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,26px" size="md" tone="secondary">Transparency from the beginning. Pick the level of involvement you want.</x-import>
 
-      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); align-items: stretch;">
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-5); align-items: stretch;">
         <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); border-top: 1px solid var(--rule); background: var(--surface-raised);">
           <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
             <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Boots Off</div>
@@ -426,10 +453,9 @@
             <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOff }}">Check your date</x-import>
           </div>
         </div>
-        <div style="position: relative; display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--accent-line); border-top: 4px solid var(--accent); background: var(--accent-wash);">
+        <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); background: var(--surface-raised);">
           <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
-            <div style="align-self: flex-start; background: var(--accent); color: var(--accent-on); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; padding: 5px 10px; margin-bottom: var(--sp-2);">Most popular approach</div>
-            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--accent);">Boots On</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Boots On</div>
             <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$4000</div>
             <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Standard DJ Package</div>
           </div>
@@ -460,7 +486,48 @@
             </div>
           </div>
           <div style="margin-top: auto; padding-top: var(--sp-5);">
-            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="accent" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOn }}">Check your date</x-import>
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOn }}">Check your date</x-import>
+          </div>
+        </div>
+        <div style="position: relative; display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--accent-line); box-shadow: inset 0 4px 0 0 var(--accent); background: var(--accent-wash);">
+          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
+            <div style="position: absolute; top: -11px; left: var(--sp-6); white-space: nowrap; background: var(--accent); color: var(--accent-on); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; padding: 5px 10px;">Most popular</div>
+            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--accent);">Après Live Fusion</div>
+            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$5300</div>
+            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">DJ + Saxophone</div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">3-hour performance</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Up to 200</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">2 wireless mics</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20 uplights, 2 moving heads, 6 bar lights</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Involved in music curation</div>
+            </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Live Performers</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Saxophonist</div>
+            </div>
+          </div>
+          <div style="margin-top: auto; padding-top: var(--sp-5);">
+            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="accent" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickApresLive }}">Check your date</x-import>
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); background: var(--surface-raised);">
@@ -498,6 +565,10 @@
               <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Enhancements</div>
               <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Karaoke, projectors and screens, pipe &amp; drape, TVs, staging, video wall, confidence monitors, and more</div>
             </div>
+            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Live Performers</div>
+              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Sax, violinist, drummer, guitarist, pianist</div>
+            </div>
           </div>
           <div style="margin-top: auto; padding-top: var(--sp-5);">
             <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickCustom }}">Check your date</x-import>
@@ -526,8 +597,6 @@
   </x-import>
 
   <!-- CLOSE -->
-  
-
   <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,900px" id="date" eyebrow="One step" heading="CHECK YOUR DATE" level="2" top-rule="true" data-screen-label="Check your date">
     <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--sp-9); align-items: start;">
       <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
@@ -562,7 +631,6 @@
 
         <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
           <form onSubmit="{{ onSubmit }}" onPointerDown="{{ markHuman }}" onKeyDown="{{ markHuman }}" onChange="{{ markHuman }}" name="corporate-date-check" method="POST" style="display: flex; flex-direction: column; gap: var(--sp-6);">
-            <input type="hidden" name="form-name" value="corporate-date-check">
 
             <div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
               <label for="company-website">Company website</label>
@@ -601,9 +669,6 @@
       </div>
     </div>
 
-    <sc-if value="{{ showVendorCta }}" hint-placeholder-val="{{ true }}">
-      
-    </sc-if>
   </x-import><footer style="border-top: 1px solid var(--rule); padding: var(--sp-9) var(--page-pad) var(--sp-7); display: flex; flex-direction: column; gap: var(--sp-8);">
     <div style="max-width: var(--grid-max); margin-inline: auto; width: 100%; display: flex; flex-direction: column; gap: var(--sp-8);">
       <div style="display: flex; flex-wrap: wrap; gap: var(--sp-8); justify-content: space-between; align-items: flex-start;">
@@ -636,25 +701,15 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;categoryWord&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;APRÈS&quot;,&quot;FESTIVAL&quot;],&quot;default&quot;:&quot;APRÈS&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;A/B test&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form&quot;},&quot;showRepel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showVendorCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;categoryWord&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;APRÈS&quot;,&quot;FESTIVAL&quot;],&quot;default&quot;:&quot;APRÈS&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;A/B test&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Form&quot;},&quot;showRepel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
 class Component extends DCLogic {
-  state = { playing: false, progress: 0, sent: false, openFaq: 0, pkg: '', videoPaused: false };
-
-  componentWillUnmount() { clearInterval(this._t); }
-
-  togglePlay = () => {
-    const next = !this.state.playing;
-    clearInterval(this._t);
-    if (next) {
-      this._t = setInterval(() => {
-        this.setState(s => {
-          const p = s.progress + 0.01;
-          if (p >= 1) { clearInterval(this._t); return { progress: 0, playing: false }; }
-          return { progress: p };
-        });
-      }, 140);
-    }
-    this.setState({ playing: next });
+  state = {
+    sent: false,
+    openFaq: 0,
+    pkg: '',
+    eventType: '',
+    danceFloor: '',
+    videoPaused: false,
   };
 
   FAQ = [
@@ -692,9 +747,10 @@ class Component extends DCLogic {
 
   PACKAGES = [
     'Not sure yet',
-    'Boots Off · Afterparty Package',
-    'Boots On · Standard DJ Package',
-    'Custom Boots · Detailed Approach',
+    'Boots Off · Afterparty · Up to 2 hours · $3200',
+    'Boots On · Standard DJ · Up to 3 hours · $4000',
+    'Après Live Fusion · DJ + Saxophone · Up to 3 hours · $5300',
+    'Custom Boots · Detailed Approach · $4500–20k',
   ];
 
   videoRef = React.createRef();
@@ -729,22 +785,6 @@ class Component extends DCLogic {
     return user + String.fromCharCode(64) + host;
   }
 
-  /* Lead delivery inbox (info@reeverbent.net), obfuscated the same way.
-     Shared across all three landing pages so every lead lands in one place. */
-  leadTo() {
-    const user = ['o', 'f', 'n', 'i'].reverse().join('');
-    const host = 'ten.tnebreveer'.split('').reverse().join('');
-    return user + String.fromCharCode(64) + host;
-  }
-
-  /* FormSubmit AJAX endpoint built at runtime. A formEndpoint prop other
-     than '/' (e.g. a Zapier catch hook) overrides it without a rebuild. */
-  leadEndpoint() {
-    const custom = this.props.formEndpoint;
-    if (custom && custom !== '/') return custom;
-    return 'https://formsubmit.co/ajax/' + this.leadTo();
-  }
-
   formReadyAt = Date.now();
   humanTouch = false;
   markHuman = () => { this.humanTouch = true; };
@@ -769,14 +809,17 @@ class Component extends DCLogic {
     const data = new FormData(form);
     data.delete('company_website');
     data.append('human_verified', 'true');
-    data.append('page_source', 'corporate-apres · parkcityutahapres.com');
-    data.append('_subject', 'New lead — Corporate Après (parkcityutahapres.com)');
+    data.append('_subject', 'New corporate inquiry — parkcityutahapres.com');
     data.append('_template', 'table');
     data.append('_captcha', 'false');
 
-    fetch(this.leadEndpoint(), {
+    const endpoint = this.props.formEndpoint || ('https://formsubmit.co/ajax/' + this.mail());
+    fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
       body: new URLSearchParams(data).toString(),
     }).catch(() => {});
 
@@ -789,26 +832,24 @@ class Component extends DCLogic {
       mailText: this.mail(),
       mailHref: 'mailto:' + this.mail(),
       markHuman: this.markHuman,
-      heroImage: this.props.heroImage || 'assets/imagery/hero-corporate.jpg',
-      heroFigureStyle: { style: { height: '100%' } },
       videoRef: this.videoRef,
       toggleVideo: this.toggleVideo,
       videoBtnLabel: this.state.videoPaused ? 'Play video' : 'Pause video',
       packages: this.PACKAGES,
       pkg: this.state.pkg || 'Not sure yet',
       onPkgChange: (e) => this.setState({ pkg: e.target.value }),
-      eventType: this.state.eventType || 'Corporate event',
+      eventType: this.state.eventType || 'Corporate Event',
       onEventTypeChange: (e) => this.setState({ eventType: e.target.value }),
       danceFloors: this.DANCE_FLOORS,
       danceFloor: this.state.danceFloor || '',
       onDanceFloorChange: (e) => this.setState({ danceFloor: e.target.value }),
       pickBootsOff: () => this.pick(this.PACKAGES[1]),
       pickBootsOn: () => this.pick(this.PACKAGES[2]),
-      pickCustom: () => this.pick(this.PACKAGES[3]),
+      pickApresLive: () => this.pick(this.PACKAGES[3]),
+      pickCustom: () => this.pick(this.PACKAGES[4]),
       heroHeadlineStyle: { style: { fontSize: 'min(104px, 6.1vw)', whiteSpace: 'nowrap' } },
 
       showRepel: this.props.showRepel ?? true,
-      showVendorCta: this.props.showVendorCta ?? true,
       onSubmit: this.onSubmit,
       sent: this.state.sent,
       notSent: !this.state.sent,
@@ -825,13 +866,13 @@ class Component extends DCLogic {
 
       faq: this.faqItems(),
       eventTypes: [
-        'Corporate event',
-        'Conference or incentive-trip afterparty',
-        'Holiday party',
-        'Gala or awards night',
-        'Brand activation or opening',
-        'Retreat',
-        'Something else',
+        'Action Sports',
+        'Corporate Event',
+        'Afterparty',
+        'Retreat Party',
+        'Gala',
+        'Brand Activation',
+        'Something Else',
       ],
     };
   }
