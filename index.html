@@ -846,9 +846,13 @@ class Component extends DCLogic {
         Accept: 'application/json',
       },
       body: new URLSearchParams(data).toString(),
+      /* keepalive lets the POST finish even though we navigate away
+         on the next line — without it the browser cancels it. */
+      keepalive: true,
     }).catch(() => {});
 
-    this.setState({ sent: true });
+    try { sessionStorage.setItem('dcr_inquiry_sent', '1'); } catch (e) {}
+    window.location.assign('roadmap.html');
   };
 
   renderVals() {

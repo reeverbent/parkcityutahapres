@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /roadmap.html
 
 Sitemap: https://parkcityutahapres.com/sitemap.xml
