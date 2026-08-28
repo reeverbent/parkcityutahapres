@@ -1,0 +1,329 @@
+/* ===== fonts ===== */
+/* Webfonts. See readme.md > VISUAL FOUNDATIONS > Type for the substitution log.
+   Anton         -> display stand-in for the custom DJ • CAM logotype face
+   Archivo       -> stand-in for Acumin Pro Wide (Adobe Fonts, no webfont binary supplied)
+   Montserrat    -> guidebook-approved substitute for Brandon Grotesque
+   Open Sans     -> long-form / UI text
+   Libre Baskerville Italic -> the one-word editorial accent (Baskerville Italic) */
+
+/* ===== colors ===== */
+:root{
+  /* ---- Brand primaries (Meldeen 2022 guidebook, exact) ---- */
+  --dcr-black:#000000;
+  --dcr-white:#FFFFFF;
+
+  /* ---- Brand secondaries (Meldeen 2022 guidebook, exact) ---- */
+  --dcr-purple:#6D22A8;
+  --dcr-magenta:#FE01CE;
+  --dcr-coral:#FD675E;
+  --dcr-ice-blue:#A0DCF9;
+
+  /* ---- Neutrals. NOT in the guidebook: derived from black/white for UI needs.
+         Kept intentionally few so the field still reads as pure black or pure white. ---- */
+  --ink-0:#000000;
+  --ink-1:#0A0A0A;   /* raised surface on black */
+  --ink-2:#141414;   /* inset / input field on black */
+  --ink-3:#1F1F1F;   /* hover on black */
+  --ink-4:#2E2E2E;   /* hairline on black */
+  --ink-5:#6B6B6B;   /* muted type on black */
+  --ink-6:#A8A8A8;   /* secondary type on black */
+
+  --paper-0:#FFFFFF;
+  --paper-1:#F5F5F5; /* raised surface on white */
+  --paper-2:#EAEAEA; /* inset / input field on white */
+  --paper-3:#DCDCDC; /* hairline on white */
+  --paper-4:#8C8C8C; /* muted type on white */
+  --paper-5:#4A4A4A; /* secondary type on white */
+
+  /* ---- Accent tints. Only ever used as hairlines, washes and scrims —
+         never as a large field. ---- */
+  --coral-wash:rgba(253,103,94,.12);
+  --coral-line:rgba(253,103,94,.32);
+  --ice-wash:rgba(160,220,249,.12);
+  --ice-line:rgba(160,220,249,.32);
+  --purple-wash:rgba(109,34,168,.16);
+  --purple-line:rgba(109,34,168,.40);
+  --magenta-wash:rgba(254,1,206,.12);
+  --magenta-line:rgba(254,1,206,.32);
+
+  /* ---- Photo scrims. Every logo and every headline over photography sits on one of these. ---- */
+  --scrim-flat:rgba(0,0,0,.62); /* @kind other */
+  --scrim-heavy:rgba(0,0,0,.78); /* @kind other */
+  --scrim-top:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 100%); /* @kind other */
+  --scrim-bottom:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,0) 100%); /* @kind other */
+
+  /* ---- Semantic aliases: the dark field is the default. ---- */
+  --surface-page:var(--ink-0);
+  --surface-raised:var(--ink-1);
+  --surface-inset:var(--ink-2);
+  --surface-hover:var(--ink-3);
+  --surface-inverse:var(--paper-0);
+
+  --text-primary:var(--dcr-white);
+  --text-secondary:var(--ink-6);
+  --text-muted:var(--ink-5);
+  --text-inverse:var(--dcr-black);
+  --text-accent:var(--accent);
+
+  --rule:var(--ink-4);
+  --rule-accent:var(--accent-line);
+  --focus-ring:var(--accent);
+}
+
+/* Light field. Price sheets, one-sheets, proposals — the calm, premium half of the brand. */
+.dcr-field-light{
+  --surface-page:var(--paper-0);
+  --surface-raised:var(--paper-1);
+  --surface-inset:var(--paper-2);
+  --surface-hover:var(--paper-2);
+  --surface-inverse:var(--dcr-black);
+  --text-primary:var(--dcr-black);
+  --text-secondary:var(--paper-5);
+  --text-muted:var(--paper-4);
+  --text-inverse:var(--dcr-white);
+  --rule:var(--paper-3);
+}
+
+/* ===== typography ===== */
+:root{
+  /* ---- Families ---- */
+  --font-display:"Anton","Oswald","Arial Narrow",sans-serif; /* @kind font */      /* heavy condensed caps, logotype relative */
+  --font-wide:"Archivo","Helvetica Neue",Arial,sans-serif; /* @kind font */         /* Acumin Pro Wide stand-in: labels, eyebrows, spec sheets */
+  --font-support:"Montserrat","Futura","Century Gothic",sans-serif; /* @kind font *//* Brandon Grotesque stand-in: support lines, subheads */
+  --font-text:"Open Sans","Helvetica Neue",Arial,sans-serif; /* @kind font */       /* long-form body, UI, forms */
+  --font-editorial:"Libre Baskerville",Baskerville,Georgia,serif; /* @kind font */  /* one word per page, italic only */
+
+  /* ---- Display scale. Condensed caps, so it runs larger than it looks. ---- */
+  --fs-display-1:104px; /* @kind font */
+  --fs-display-2:76px; /* @kind font */
+  --fs-display-3:56px; /* @kind font */
+  --fs-display-4:40px; /* @kind font */
+
+  /* ---- Heading scale (support face) ---- */
+  --fs-head-1:32px; /* @kind font */
+  --fs-head-2:24px; /* @kind font */
+  --fs-head-3:19px; /* @kind font */
+
+  /* ---- Body ---- */
+  --fs-body-lg:19px; /* @kind font */
+  --fs-body:16px; /* @kind font */
+  --fs-body-sm:14px; /* @kind font */
+
+  /* ---- Labels: always caps, always tracked ---- */
+  --fs-label:13px; /* @kind font */
+  --fs-label-sm:11px; /* @kind font */
+  --fs-label-xs:10px; /* @kind font */
+
+  /* ---- Weights ---- */
+  --fw-display:400; /* @kind font */   /* Anton has one weight */
+  --fw-light:300; /* @kind font */
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:700; /* @kind font */
+  --fw-black:800; /* @kind font */
+
+  /* ---- Line heights ---- */
+  --lh-display:0.94; /* @kind font */
+  --lh-display-tight:0.90; /* @kind font */ /* only when no accented cap can land under a previous line */
+  --lh-tight:1.12; /* @kind font */
+  --lh-heading:1.20; /* @kind font */
+  --lh-body:1.60; /* @kind font */
+  --lh-label:1.30; /* @kind font */
+
+  /* ---- Tracking. The brand lives at the two extremes: tight display, wide labels. ---- */
+  --ls-display:-0.02em; /* @kind font */
+  --ls-display-tight:-0.03em; /* @kind font */
+  --ls-heading:0em; /* @kind font */
+  --ls-body:0em; /* @kind font */
+  --ls-support:0.06em; /* @kind font */   /* support lines under a headline */
+  --ls-label:0.18em; /* @kind font */     /* small caps labels */
+  --ls-label-wide:0.32em; /* @kind font *//* eyebrows, section markers, REEVE-style lettering */
+
+  /* ---- Composite roles ---- */
+  --type-display:var(--fw-display) var(--fs-display-1)/var(--lh-display) var(--font-display); /* @kind font */
+  --type-eyebrow:var(--fw-semibold) var(--fs-label-sm)/var(--lh-label) var(--font-wide); /* @kind font */
+  --type-support:var(--fw-light) var(--fs-body-lg)/var(--lh-body) var(--font-support); /* @kind font */
+  --type-body:var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-text); /* @kind font */
+  --type-label:var(--fw-semibold) var(--fs-label)/var(--lh-label) var(--font-wide); /* @kind font */
+}
+
+/* ===== spacing ===== */
+:root{
+  /* 4px base. Event marketing wants big jumps, so the scale gets coarse fast. */
+  --sp-1:4px;
+  --sp-2:8px;
+  --sp-3:12px;
+  --sp-4:16px;
+  --sp-5:24px;
+  --sp-6:32px;
+  --sp-7:48px;
+  --sp-8:64px;
+  --sp-9:96px;
+  --sp-10:128px;
+  --sp-11:160px;
+  --sp-12:200px;
+
+  /* Section rhythm. Sections are tall; the brand's calm comes from air, not from decoration. */
+  --section-y:var(--sp-10);
+  --section-y-tight:var(--sp-9);
+  --section-y-loose:var(--sp-12);
+
+  /* Page grid. 12 columns, wide gutters. */
+  --grid-max:1280px;
+  --grid-max-narrow:920px;
+  --grid-cols:12; /* @kind other */
+  --grid-gap:32px;
+  --page-pad:48px;
+  --page-pad-sm:24px;
+
+  /* Measure caps. Copy is short by rule. */
+  --measure-display:16ch; /* @kind spacing */
+  --measure-support:44ch; /* @kind spacing */
+  --measure-body:66ch; /* @kind spacing */
+
+  /* Logo clear space = the cap height of the DJ • CAM line. */
+  --logo-clear:1em; /* @kind spacing */
+}
+
+/* ===== borders ===== */
+:root{
+  /* The brand is hard-edged. Square is the default; radius is the exception. */
+  --radius-none:0px;
+  --radius-sm:2px;      /* inputs, only when a square field reads broken */
+  --radius-pill:999px;  /* play affordance, avatar tile, nothing else */
+
+  --bw-hairline:1px; /* @kind spacing */
+  --bw-rule:1px; /* @kind spacing */ /* the thin accent rules between grid cells */
+  --bw-bar:2px; /* @kind spacing */
+  --bw-block:4px; /* @kind spacing */ /* section markers, top-of-card accent bars */
+
+  --border-hairline:var(--bw-hairline) solid var(--rule);
+  --border-accent:var(--bw-hairline) solid var(--accent);
+  --border-accent-soft:var(--bw-hairline) solid var(--accent-line);
+
+  /* Cards. No shadow, no radius: a hairline and a value shift do the work. */
+  --card-border:var(--border-hairline);
+  --card-radius:var(--radius-none);
+  --card-pad:var(--sp-6);
+  --card-pad-lg:var(--sp-7);
+}
+
+/* ===== effects ===== */
+:root{
+  /* There is no drop-shadow system. The guidebook bans shadows and glows on type,
+     and separation on a black field comes from hairlines and value shifts instead.
+     These two exist only for elements that genuinely float over photography. */
+  --shadow-none:none;
+  --shadow-float:0 24px 64px rgba(0,0,0,.55);
+  --shadow-sticky:0 1px 0 var(--rule);
+
+  /* Transparency + blur. Used only for a bar that sits over moving photography. */
+  --glass-dark:rgba(0,0,0,.72);
+  --glass-blur:saturate(140%) blur(14px); /* @kind other */
+
+  /* Photography grade. Real event photography, cooled slightly and pushed dark
+     so the colour reads as coming from the rig. */
+  --img-grade:brightness(.72) contrast(1.12) saturate(.92); /* @kind other */
+  --img-grade-hero:brightness(.52) contrast(1.18) saturate(.90); /* @kind other */
+  --img-grade-mono:grayscale(1) contrast(1.10) brightness(.86); /* @kind other */
+
+  /* Hairline texture: the "structured" half of the brand, used at low opacity behind spec-sheet sections. */
+  --texture-grid:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 48px),repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 48px); /* @kind other */
+
+  /* Opacity steps */
+  --op-disabled:0.38; /* @kind other */
+  --op-muted:0.62; /* @kind other */
+  --op-hover:0.80; /* @kind other */
+}
+
+/* ===== motion ===== */
+:root{
+  /* Cuts and fades. No bounce, no spring, no overshoot — the brand is a live set,
+     not a toy. Motion is short and confident. */
+  --dur-instant:80ms; /* @kind other */
+  --dur-fast:140ms; /* @kind other */
+  --dur-base:240ms; /* @kind other */
+  --dur-slow:420ms; /* @kind other */
+  --dur-reveal:640ms; /* @kind other */
+
+  --ease-out:cubic-bezier(.16,1,.3,1); /* @kind other */
+  --ease-in-out:cubic-bezier(.4,0,.2,1); /* @kind other */
+  --ease-linear:linear; /* @kind other */
+
+  --t-hover:color var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),opacity var(--dur-fast) var(--ease-out); /* @kind other */
+  --t-reveal:opacity var(--dur-reveal) var(--ease-out),transform var(--dur-reveal) var(--ease-out); /* @kind other */
+
+  /* Press = a 1px settle, never a scale-down bounce. */
+  --press-shift:translateY(1px); /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){
+  :root{--dur-fast:0ms; /* @kind other */--dur-base:0ms; /* @kind other */--dur-slow:0ms; /* @kind other */--dur-reveal:0ms; /* @kind other */}
+}
+
+/* ===== themes ===== */
+/* Accent themes. One dominant accent per piece, one supporting accent at most.
+   Spend ratio: ~70% black or white, ~20% dominant, ~10% support. */
+:root{
+  /* Default = wedding. Coral dominant, purple support. */
+  --accent:var(--dcr-coral);
+  --accent-support:var(--dcr-purple);
+  --accent-wash:var(--coral-wash);
+  --accent-line:var(--coral-line);
+  --accent-on:var(--dcr-black);      /* type colour that sits ON the accent */
+  --accent-press:#E2554D;            /* coral, value-darkened for press */
+}
+
+/* Weddings — warm, cinematic. */
+.theme-wedding{
+  --accent:var(--dcr-coral);
+  --accent-support:var(--dcr-purple);
+  --accent-wash:var(--coral-wash);
+  --accent-line:var(--coral-line);
+  --accent-on:var(--dcr-black);
+  --accent-press:#E2554D;
+}
+
+/* Corporate — cool, composed, competent. */
+.theme-corporate{
+  --accent:var(--dcr-ice-blue);
+  --accent-support:var(--dcr-coral);
+  --accent-wash:var(--ice-wash);
+  --accent-line:var(--ice-line);
+  --accent-on:var(--dcr-black);
+  --accent-press:#82C4E6;
+}
+
+/* Nightlife / après / open-format club work — highest energy. */
+.theme-nightlife{
+  --accent:var(--dcr-magenta);
+  --accent-support:var(--dcr-ice-blue);
+  --accent-wash:var(--magenta-wash);
+  --accent-line:var(--magenta-line);
+  --accent-on:var(--dcr-black);
+  --accent-press:#D601AE;
+}
+
+/* Cosmic / signature guidebook pairing — purple with coral. */
+.theme-cosmic{
+  --accent:var(--dcr-purple);
+  --accent-support:var(--dcr-coral);
+  --accent-wash:var(--purple-wash);
+  --accent-line:var(--purple-line);
+  --accent-on:var(--dcr-white);
+  --accent-press:#5A1B8C;
+}
+
+/* ===== base ===== */
+/* Minimal element defaults so specimens, cards and kits agree without extra CSS. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font:var(--type-body);letter-spacing:var(--ls-body);text-wrap:pretty;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:var(--fw-display);text-transform:uppercase;letter-spacing:var(--ls-display);line-height:var(--lh-display)}
+p{margin:0}
+img{display:block;max-width:100%}
+a{color:var(--accent);text-decoration:none;transition:var(--t-hover)}
+a:hover{color:var(--text-primary)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:var(--bw-bar) solid var(--focus-ring);outline-offset:2px}
+::selection{background:var(--accent);color:var(--accent-on)}
+hr{border:0;border-top:var(--border-hairline);margin:0}
