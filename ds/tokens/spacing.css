@@ -1,0 +1,36 @@
+:root{
+  /* 4px base. Event marketing wants big jumps, so the scale gets coarse fast. */
+  --sp-1:4px;
+  --sp-2:8px;
+  --sp-3:12px;
+  --sp-4:16px;
+  --sp-5:24px;
+  --sp-6:32px;
+  --sp-7:48px;
+  --sp-8:64px;
+  --sp-9:96px;
+  --sp-10:128px;
+  --sp-11:160px;
+  --sp-12:200px;
+
+  /* Section rhythm. Sections are tall; the brand's calm comes from air, not from decoration. */
+  --section-y:var(--sp-10);
+  --section-y-tight:var(--sp-9);
+  --section-y-loose:var(--sp-12);
+
+  /* Page grid. 12 columns, wide gutters. */
+  --grid-max:1280px;
+  --grid-max-narrow:920px;
+  --grid-cols:12; /* @kind other */
+  --grid-gap:32px;
+  --page-pad:48px;
+  --page-pad-sm:24px;
+
+  /* Measure caps. Copy is short by rule. */
+  --measure-display:16ch; /* @kind spacing */
+  --measure-support:44ch; /* @kind spacing */
+  --measure-body:66ch; /* @kind spacing */
+
+  /* Logo clear space = the cap height of the DJ • CAM line. */
+  --logo-clear:1em; /* @kind spacing */
+}
