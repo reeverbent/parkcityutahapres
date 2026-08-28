@@ -12,7 +12,11 @@
 <x-dc>
 <helmet>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <script>(function(w,d,s,l,i){
+  /* Guard: the helmet contents can execute twice (once in place, once when
+     mounted into <head>), which double-counts every pageview and conversion. */
+  if(w[l]&&w[l].some(function(e){return e&&e['gtm.start'];}))return;
+  w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -35,7 +39,13 @@
     html, body { overflow-x: clip; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: var(--dcr-white); }
-    @media (max-width: 900px) { .theme-corporate { --page-pad: 20px; } }
+    @media (max-width: 900px) {
+      .theme-corporate { --page-pad: 20px; }
+      [data-m="steps"] { grid-template-columns: 1fr !important; }
+      [data-m="steps"] > div { border-left: none !important; padding-left: 0 !important; }
+      /* the luxurious desktop gap becomes 21 lines on a phone */
+      [data-m="venuerow"] { gap: var(--sp-4) var(--sp-5) !important; justify-content: center !important; }
+    }
   </style>
 
   <!-- Google Tag Manager (noscript) -->
@@ -43,26 +53,85 @@
   <!-- End Google Tag Manager (noscript) -->
 </helmet>
 
-<div class="theme-corporate" style="background: var(--dcr-black); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--sp-9) var(--page-pad); gap: var(--sp-8);">
+<div class="theme-corporate" style="background: var(--dcr-black); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: var(--sp-7) var(--page-pad) var(--sp-10); gap: var(--sp-7);">
 
-  <img src="assets/logo/dj-cam-reeve-coral.png" alt="DJ Cam Reeve" style="width: min(420px, 82vw); height: auto; display: block;">
+  <img src="assets/logo/dj-cam-reeve-coral.png" alt="DJ Cam Reeve" style="width: min(220px, 62vw); height: auto; display: block;">
 
-  <p style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body-lg); line-height: var(--lh-body); letter-spacing: var(--ls-support); color: var(--dcr-ice-blue); text-align: center; max-width: 48ch; margin: 0 0 calc(var(--sp-8) * -0.45) 0;">Wanna know what's next?<br>Check it ⬇</p>
-
-  <div style="width: 100%; max-width: 960px; aspect-ratio: 640 / 360; position: relative; border: 1px solid var(--rule); background: var(--surface-raised);">
-    <iframe title="vimeo-player" src="https://player.vimeo.com/video/932931100?h=23b064fab0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen="{{ true }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: var(--sp-4); text-align: center;">
+    <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md">Your inquiry is in</x-import>
+    <p style="font-family: var(--font-text); font-size: var(--fs-body-lg); line-height: 1.5; color: var(--text-primary); max-width: 52ch; margin: 0;">DJ Cam and his team have your date. You will hear back within one business day.</p>
   </div>
 
-  <a href="https://www.instagram.com/djcamreeve/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: var(--sp-3); min-height: 48px; color: var(--text-secondary); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); text-decoration: none;" style-hover="color: var(--accent);">
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#E1306C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;">
-      <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-      <circle cx="12" cy="12" r="4.2"></circle>
-      <circle cx="17.6" cy="6.4" r="1.1" fill="#E1306C" stroke="none"></circle>
-    </svg>
-    DJ Cam Reeve
-  </a>
+  <div style="width: 100%; max-width: 720px; display: flex; flex-direction: column; gap: var(--sp-3);">
+    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-3) var(--sp-4); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label);">
+      <span style="color: var(--accent);">0:34</span>
+      <span style="color: var(--text-muted);">DJ Cam walks you through the roadmap, from here to your event</span>
+    </div>
+    <div style="width: 100%; aspect-ratio: 640 / 360; position: relative; border: 1px solid var(--rule); background: var(--surface-raised);">
+      <iframe title="DJ Cam Reeve — your roadmap" src="https://player.vimeo.com/video/932931100?h=23b064fab0&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen="{{ true }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+    </div>
+  </div>
+
+  <div style="width: 100%; max-width: 960px; display: flex; flex-direction: column; gap: var(--sp-6);">
+    <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md" tone="muted">Or read it in thirty seconds</x-import>
+
+    <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.StepGrid" hint-size="100%,340px" steps="{{ steps }}" columns="2" data-m="steps"></x-import>
+  </div>
+
+  <div style="width: 100%; max-width: 960px; border-top: 1px solid var(--rule); padding-top: var(--sp-6); font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: var(--lh-body); color: var(--text-muted);">One thing that helps: add <span style="color: var(--text-secondary);">Info@djcamreeve.com</span> to your contacts now, so the reply does not land in a promotions tab.</div>
+
+  <div style="width: 100%; max-width: 960px; display: flex; flex-direction: column; gap: var(--sp-6);">
+    <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md" tone="muted">Venues and Rooms Played</x-import>
+    <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.VenueList" hint-size="100%,120px" layout="row" size="sm" venues="{{ venues }}" data-m="venuerow" dc-props="{{ venueRowStyle }}"></x-import>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: var(--sp-4); margin-top: var(--sp-5); text-align: center;">
+    <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-muted);">While you wait, see what a room looks like at 3 in the afternoon or 11 at night.</div>
+    <a href="https://www.instagram.com/djcamreeve/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: var(--sp-3); min-height: 48px; color: var(--text-secondary); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); text-decoration: none;" style-hover="color: var(--dcr-white);">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#E1306C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;">
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <circle cx="17.6" cy="6.4" r="1.1" fill="#E1306C" stroke="none"></circle>
+      </svg>
+      DJ Cam Reeve
+    </a>
+  </div>
 
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  /* Venue names are Cam's call. The first seven match the landing page;
+     the rest were added by him on 8/27/26. If this list changes, check
+     Corporate Landing Page.dc.html — it keeps its own copy. */
+  VENUES = [
+    'Montage Deer Valley', 'The Lodge at Blue Sky', 'Deer Valley Resort', 'Grand Hyatt',
+    'Park City Mountain', 'High West', 'The St. Regis',
+    'The Vintage Room', 'The Après Lounge', 'Pendry', 'Premier Park City',
+    'High West Saloon', 'Stein Eriksen Lodge', 'Snowbird', 'Sundance',
+    'Timber Moose Lodge', 'Red Ledges', 'Zermatt Utah Resort & Spa', 'The Chateaux Deer Valley',
+    'Waldorf Astoria Park City', 'Utah Olympic Park', 'The Kimball Terrace', 'Talisker Club – Empire Pass',
+    'Salt Palace Salt Lake City', 'Hyatt Regency', 'Delta Center', 'Olympic Oval',
+  ];
+
+  STEPS = [
+    { title: 'We check the date', body: 'DJ Cam and his team review what you sent and confirm whether the date is open. Within one business day.' },
+    { title: 'A quick call', body: 'Scope, the room, the feel you want, and your quote. No pressure and no surprises.' },
+    { title: 'The date is yours', body: 'A signed contract and a $1,000 booking fee reserve it. The contract comes attached to your quote.' },
+    { title: 'We build the night', body: 'Music planning your way, a final call to lock the timeline, and then we party.' },
+  ];
+
+  renderVals() {
+    return {
+      venues: this.VENUES,
+      steps: this.STEPS,
+      blueLineStyle: { style: { color: 'var(--dcr-ice-blue)', textAlign: 'center', maxWidth: '48ch', marginTop: 'var(--sp-2)' } },
+      /* VenueList's own gap is the sp-8 shorthand, which puts 64px between
+         wrapped rows. Fifteen names need a tight row gap, wide column gap. */
+      venueRowStyle: { style: { gap: 'var(--sp-6) var(--sp-7)' } },
+    };
+  }
+}
+</script>
 </body>
 </html>
