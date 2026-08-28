@@ -1,0 +1,21 @@
+:root{
+  /* The brand is hard-edged. Square is the default; radius is the exception. */
+  --radius-none:0px;
+  --radius-sm:2px;      /* inputs, only when a square field reads broken */
+  --radius-pill:999px;  /* play affordance, avatar tile, nothing else */
+
+  --bw-hairline:1px; /* @kind spacing */
+  --bw-rule:1px; /* @kind spacing */ /* the thin accent rules between grid cells */
+  --bw-bar:2px; /* @kind spacing */
+  --bw-block:4px; /* @kind spacing */ /* section markers, top-of-card accent bars */
+
+  --border-hairline:var(--bw-hairline) solid var(--rule);
+  --border-accent:var(--bw-hairline) solid var(--accent);
+  --border-accent-soft:var(--bw-hairline) solid var(--accent-line);
+
+  /* Cards. No shadow, no radius: a hairline and a value shift do the work. */
+  --card-border:var(--border-hairline);
+  --card-radius:var(--radius-none);
+  --card-pad:var(--sp-6);
+  --card-pad-lg:var(--sp-7);
+}

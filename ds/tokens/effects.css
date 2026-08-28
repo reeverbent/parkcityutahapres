@@ -1,0 +1,26 @@
+:root{
+  /* There is no drop-shadow system. The guidebook bans shadows and glows on type,
+     and separation on a black field comes from hairlines and value shifts instead.
+     These two exist only for elements that genuinely float over photography. */
+  --shadow-none:none;
+  --shadow-float:0 24px 64px rgba(0,0,0,.55);
+  --shadow-sticky:0 1px 0 var(--rule);
+
+  /* Transparency + blur. Used only for a bar that sits over moving photography. */
+  --glass-dark:rgba(0,0,0,.72);
+  --glass-blur:saturate(140%) blur(14px); /* @kind other */
+
+  /* Photography grade. Real event photography, cooled slightly and pushed dark
+     so the colour reads as coming from the rig. */
+  --img-grade:brightness(.72) contrast(1.12) saturate(.92); /* @kind other */
+  --img-grade-hero:brightness(.52) contrast(1.18) saturate(.90); /* @kind other */
+  --img-grade-mono:grayscale(1) contrast(1.10) brightness(.86); /* @kind other */
+
+  /* Hairline texture: the "structured" half of the brand, used at low opacity behind spec-sheet sections. */
+  --texture-grid:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 48px),repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 48px); /* @kind other */
+
+  /* Opacity steps */
+  --op-disabled:0.38; /* @kind other */
+  --op-muted:0.62; /* @kind other */
+  --op-hover:0.80; /* @kind other */
+}
