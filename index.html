@@ -44,15 +44,23 @@
   <link rel="stylesheet" href="ds/styles.css">
   <script src="ds/ds-bundle.js"></script>
   <style>
-    html { scroll-behavior: smooth; }
+    /* No scroll-behavior: smooth here. An 8,400px animated scroll was being
+       cancelled mid-flight by the hero video and seven embeds still settling,
+       so every anchor link moved ~3px and stopped. Anchors are handled by an
+       explicit instant-scroll delegate in componentDidMount. */
+    html { scroll-padding-top: 100px; }
     .theme-corporate { --text-muted: #8A8A8A; }
-    .om-skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--dcr-white); color: var(--dcr-black); padding: 12px 20px; font-family: var(--font-wide); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; }
+    .om-skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--dcr-white); color: var(--dcr-black); padding: 14px 20px; font-family: var(--font-wide); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; }
     .om-skip:focus { left: 0; }
-    #production, #pricing, #results, #date { scroll-margin-top: 84px; }
+    #top, #production, #live, #pricing, #results, #date { scroll-margin-top: 100px; }
     body { margin: 0; background: #000; }
     html, body { overflow-x: clip; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: var(--dcr-white); }
+
+    /* 2,600+ dead clicks landed on these. They are not controls; stop the tap
+       from selecting text so a stray press does nothing visible. */
+    #top h1, #top [data-m="hero-trio"] > div, section header, h1, h2, h3 { -webkit-user-select: none; user-select: none; }
 
     /* Native date/time controls default to a black glyph, invisible on the dark field. */
     input[type="date"], input[type="time"], input[type="datetime-local"], select { color-scheme: dark; }
@@ -126,6 +134,9 @@
       footer a { min-height: 44px !important; display: inline-flex !important; align-items: center !important; }
       #top button { min-height: 44px !important; }
 
+      [data-m="sticky-cta"] { display: block !important; }
+      footer { padding-bottom: 96px !important; }
+
       /* the 10px label tier is too small to read on a phone */
       [style*="font-size: 10px"] { font-size: 11px !important; }
     }
@@ -159,9 +170,10 @@
   <!-- HERO -->
   <section id="top" data-screen-label="Hero" style="position: relative; min-height: min(90vh, 880px); display: flex; align-items: flex-end; overflow: hidden;">
     <div style="position: absolute; inset: 0; overflow: hidden; background: var(--dcr-black);">
-      <video ref="{{ videoRef }}" src="assets/imagery/hero-apres.mp4" poster="assets/imagery/hero-poster.jpg" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Background footage from a DJ Cam Reeve event" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.52) saturate(0.9);"></video>
-      <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4);"></div>
-      <button type="button" onClick="{{ toggleVideo }}" aria-label="{{ videoBtnLabel }}" style="position: absolute; right: 20px; bottom: 20px; z-index: 4; display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.6); border: 1px solid var(--rule); color: var(--dcr-white); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.16em; padding: 9px 14px; cursor: pointer;" style-hover="border-color: var(--accent); color: var(--accent);">{{ videoBtnLabel }}</button>
+      <img src="assets/imagery/hero-poster.jpg" alt="" fetchpriority="high" decoding="async" width="1600" height="1200" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.52) saturate(0.9);">
+      <video data-m="hero-video" ref="{{ videoRef }}" data-src="assets/imagery/hero-apres.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.52) saturate(0.9);"></video>
+      <div onClick="{{ onHeroTap }}" style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4);"></div>
+      <button type="button" data-m="video-btn" onClick="{{ toggleVideo }}" aria-label="{{ videoBtnLabel }}" style="position: absolute; right: 20px; bottom: 20px; z-index: 4; display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.6); border: 1px solid var(--rule); color: var(--dcr-white); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.16em; padding: 9px 14px; cursor: pointer;" style-hover="border-color: var(--accent); color: var(--accent);">{{ videoBtnLabel }}</button>
     </div>
 
     <div data-m="hero-pad" style="position: relative; width: 100%; max-width: var(--grid-max); margin-inline: auto; padding: var(--sp-10) clamp(16px, 2vw, 24px) var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-6);">
@@ -222,7 +234,7 @@
             <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">EDM afterparty, High West Distillery</div>
             <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Full room, peak hour</div>
           </div>
-          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fedm-wedding-afterparty-high-west%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="EDM afterparty, High West Distillery"></iframe>
+          <iframe width="100%" height="60" data-src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fedm-wedding-afterparty-high-west%2F" loading="lazy" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="EDM afterparty, High West Distillery"></iframe>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
@@ -230,7 +242,7 @@
             <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">Après-ski, The Vintage Room, The St. Regis</div>
             <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Jams with Cam · 3/12/2023</div>
           </div>
-          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fjams-with-cam-the-vintage-room-st-regis-apres-ski-3122023%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="Après ski, The Vintage Room, The St. Regis"></iframe>
+          <iframe width="100%" height="60" data-src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fjams-with-cam-the-vintage-room-st-regis-apres-ski-3122023%2F" loading="lazy" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="Après ski, The Vintage Room, The St. Regis"></iframe>
         </div>
 
         <div style="margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
@@ -238,7 +250,7 @@
             <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">Afternoon house vibes</div>
             <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Daylight hours, talking room</div>
           </div>
-          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fafternoon-house-vibes-20230328-182739%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="Afternoon house vibes"></iframe>
+          <iframe width="100%" height="60" data-src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fafternoon-house-vibes-20230328-182739%2F" loading="lazy" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="Afternoon house vibes"></iframe>
         </div>
 
       </div>
@@ -246,14 +258,14 @@
       <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
         <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">LET'S MAKE THE ENERGY ELECTRIC</div>
         <div style="padding: 56.25% 0 0 0; position: relative; border: 1px solid var(--rule); background: var(--surface-raised);">
-          <iframe src="https://player.vimeo.com/video/1188499051?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ Cam Reeve | 2025 Recap Video"></iframe>
+          <iframe data-src="https://player.vimeo.com/video/1188499051?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ Cam Reeve | 2025 Recap Video"></iframe>
         </div>
         <div style="margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-4); padding: var(--sp-6); background: var(--surface-raised); border: 1px solid var(--rule);">
           <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
             <div style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-head-3); letter-spacing: var(--ls-display); line-height: 1.1; color: var(--text-primary);">The air is electric, episode 2</div>
             <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">With DJ Cam Reeve</div>
           </div>
-          <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fthe-air-is-electric-episode-2-wdj-cam-reeve%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="The air is electric, episode 2"></iframe>
+          <iframe width="100%" height="60" data-src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;feed=%2Fdjcamreeve%2Fthe-air-is-electric-episode-2-wdj-cam-reeve%2F" loading="lazy" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" style="display: block; border: 0;" title="The air is electric, episode 2"></iframe>
         </div>
       </div>
     </div>
@@ -433,10 +445,10 @@
 
       <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-6); align-items: start;">
         <div style="padding: 56.25% 0 0 0; position: relative; border: 1px solid var(--rule); background: var(--ink-2);">
-          <iframe src="https://player.vimeo.com/video/1132325763?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ &amp; Sax (Intro + Live studio Feed)"></iframe>
+          <iframe data-src="https://player.vimeo.com/video/1132325763?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ &amp; Sax (Intro + Live studio Feed)"></iframe>
         </div>
         <div style="padding: 56.25% 0 0 0; position: relative; border: 1px solid var(--rule); background: var(--ink-2);">
-          <iframe src="https://player.vimeo.com/video/1221916024?h=68b4bf0cd4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ + Sax | Intro + Studio Live Feed"></iframe>
+          <iframe data-src="https://player.vimeo.com/video/1221916024?h=68b4bf0cd4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="DJ + Sax | Intro + Studio Live Feed"></iframe>
         </div>
       </div>
     </div>
@@ -668,7 +680,15 @@
               <input id="company-website" name="company_website" type="text" tabIndex="-1" autoComplete="off">
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
+            <input type="hidden" name="utm_source" data-utm="utm_source">
+            <input type="hidden" name="utm_medium" data-utm="utm_medium">
+            <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
+            <input type="hidden" name="utm_content" data-utm="utm_content">
+            <input type="hidden" name="utm_term" data-utm="utm_term">
+            <input type="hidden" name="gclid" data-utm="gclid">
+            <input type="hidden" name="landing_page" data-utm="landing_page">
+
+            <div data-m="form-top" style="display: flex; flex-direction: column; gap: var(--sp-3);">
               <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-secondary);">Full name (person inquiring) <span style="color: var(--dcr-coral);">*</span></div>
               <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5);">
               <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="first-name" name="first_name" label="First" required="{{ true }}"></x-import>
@@ -700,17 +720,23 @@
       </div>
     </div>
 
-  </x-import><footer style="border-top: 1px solid var(--rule); padding: var(--sp-9) var(--page-pad) var(--sp-7); display: flex; flex-direction: column; gap: var(--sp-8);">
+  </x-import>
+
+  <div data-m="sticky-cta" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; padding: 12px var(--page-pad) calc(12px + env(safe-area-inset-bottom)); background: var(--glass-dark); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-top: 1px solid var(--rule); transform: translateY(110%); transition: transform var(--dur-base) var(--ease-out);">
+    <a href="#date" style="display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; background: var(--accent); color: var(--accent-on); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 14px; letter-spacing: 0.16em; text-decoration: none;">Check your date</a>
+  </div>
+
+  <footer style="border-top: 1px solid var(--rule); padding: var(--sp-9) var(--page-pad) var(--sp-7); display: flex; flex-direction: column; gap: var(--sp-8);">
     <div style="max-width: var(--grid-max); margin-inline: auto; width: 100%; display: flex; flex-direction: column; gap: var(--sp-8);">
       <div style="display: flex; flex-wrap: wrap; gap: var(--sp-8); justify-content: space-between; align-items: flex-start;">
         <div style="display: flex; flex-direction: column; gap: var(--sp-5);">
-          <img src="assets/logo/dj-cam-reeve-coral.png" alt="DJ Cam Reeve" style="width: 180px; height: auto; display: block;">
+          <img src="assets/logo/dj-cam-reeve-coral.png" alt="DJ Cam Reeve" loading="lazy" decoding="async" width="180" height="53" style="width: 180px; height: auto; display: block;">
           <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="secondary">Après sets with festival energy</x-import>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
           <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,12px" size="sm" tone="muted">Contact</x-import>
-          <a href="tel:+14357706917" style="font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary); text-decoration: none;">(435) 770-6917</a>
+          <a href="tel:+14357706917" onClick="{{ onPhoneClick }}" style="font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary); text-decoration: none;">(435) 770-6917</a>
           <a href="{{ mailHref }}" style="font-family: var(--font-text); font-size: var(--fs-body); color: var(--text-primary); text-decoration: none;">{{ mailText }}</a>
           <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); color: var(--text-muted);">Park City, Utah</div>
         </div>
@@ -785,21 +811,176 @@ class Component extends DCLogic {
   ];
 
   videoRef = React.createRef();
+  MOBILE = '(max-width: 900px)';
+  isMobile() { return window.matchMedia(this.MOBILE).matches; }
+
+  componentDidMount() {
+    this.captureCampaign();
+    this.bindAnchors();
+    this.deferEmbeds();
+    this.startHeroVideo();
+    this.bindStickyCta();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._embedTimer);
+    document.removeEventListener('click', this._onAnchorClick, true);
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('scroll', this._queueScan);
+    window.removeEventListener('resize', this._queueScan);
+  }
+
+  /* ---- anchors -------------------------------------------------------
+     Smooth scrolling was cancelled mid-animation by the hero video and
+     seven embeds settling, so links moved a few pixels and stopped. Jump
+     instantly instead, and land on the thing the visitor came for: the
+     date section resolves to the first form field, not the heading. */
+  scrollToId = (id) => {
+    let el = document.getElementById(id);
+    if (!el) return false;
+    if (id === 'date') el = document.querySelector('[data-m="form-top"]') || el;
+    const header = document.querySelector('header');
+    const offset = (header ? header.getBoundingClientRect().height : 84) + 16;
+    const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - offset);
+    window.scrollTo({ top, behavior: 'instant' });
+    return true;
+  };
+
+  _onAnchorClick = (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    if (!this.scrollToId(id)) return;
+    e.preventDefault();
+    try { history.replaceState(null, '', '#' + id); } catch (err) {}
+  };
+
+  bindAnchors() {
+    document.addEventListener('click', this._onAnchorClick, true);
+    /* a cold load on /#date has the same problem */
+    if (location.hash.length > 1) {
+      const id = location.hash.slice(1);
+      requestAnimationFrame(() => this.scrollToId(id));
+    }
+  }
+
+  /* ---- embeds --------------------------------------------------------
+     Seven third-party players were loading on first paint, which is most
+     of a 47s mobile LCP. Each one now waits until it is nearly in view;
+     at 12.7% average mobile scroll depth, that means almost never. */
+  /* A plain proximity check rather than an IntersectionObserver. The embeds
+     mount inside async sections and get re-rendered, which made observer
+     registration unreliable — this re-reads the DOM every time instead. */
+  scanEmbeds = () => {
+    const frames = document.querySelectorAll('iframe[data-src]');
+    if (!frames.length) return;
+    const margin = 400;
+    frames.forEach(fr => {
+      const r = fr.getBoundingClientRect();
+      if (r.top < window.innerHeight + margin && r.bottom > -margin) {
+        fr.src = fr.getAttribute('data-src');
+        fr.removeAttribute('data-src');
+      }
+    });
+  };
+
+  deferEmbeds() {
+    this._scanQueued = false;
+    this._queueScan = () => {
+      if (this._scanQueued) return;
+      this._scanQueued = true;
+      requestAnimationFrame(() => { this._scanQueued = false; this.scanEmbeds(); });
+    };
+    window.addEventListener('scroll', this._queueScan, { passive: true });
+    window.addEventListener('resize', this._queueScan, { passive: true });
+    /* Sections mount asynchronously, so re-check for a while after load. */
+    this._embedTimer = setInterval(this.scanEmbeds, 400);
+    setTimeout(() => clearInterval(this._embedTimer), 20000);
+    this.scanEmbeds();
+  }
+
+  /* ---- hero video ----------------------------------------------------
+     Never requested on a phone. The poster image is the hero there. */
+  startHeroVideo() {
+    const v = this.videoRef.current;
+    if (!v) return;
+    if (this.isMobile()) {
+      v.style.display = 'none';
+      const btn = document.querySelector('[data-m="video-btn"]');
+      if (btn) btn.style.display = 'none';
+      return;
+    }
+    const src = v.getAttribute('data-src');
+    if (src) { v.src = src; v.removeAttribute('data-src'); }
+    v.play().catch(() => {});
+  }
+
+  /* Tapping the hero art toggles playback, so those taps land somewhere. */
+  onHeroTap = () => { if (this.isMobile()) return; this.toggleVideo(); };
 
   toggleVideo = () => {
     const v = this.videoRef.current;
     if (!v) return;
-    if (v.paused) { v.play(); this.setState({ videoPaused: false }); }
+    if (v.paused) { v.play().catch(() => {}); this.setState({ videoPaused: false }); }
     else { v.pause(); this.setState({ videoPaused: true }); }
+  };
+
+  /* ---- sticky mobile CTA --------------------------------------------- */
+  _onScroll = () => {
+    const bar = document.querySelector('[data-m="sticky-cta"]');
+    const hero = document.getElementById('top');
+    if (!bar || !hero) return;
+    const past = window.scrollY > hero.getBoundingClientRect().height * 0.8;
+    const atForm = (() => {
+      const d = document.getElementById('date');
+      return d && d.getBoundingClientRect().top < window.innerHeight * 0.9;
+    })();
+    bar.style.transform = (past && !atForm) ? 'translateY(0)' : 'translateY(110%)';
+  };
+
+  bindStickyCta() {
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  /* ---- campaign parameters ------------------------------------------
+     Paid traffic arrives with a gclid and no UTM campaign name, so Search
+     and YouTube are indistinguishable downstream. Carry whatever is on
+     the URL into the submission. */
+  captureCampaign() {
+    let p;
+    try { p = new URLSearchParams(location.search); } catch (e) { return; }
+    const vals = {
+      utm_source: p.get('utm_source') || '',
+      utm_medium: p.get('utm_medium') || '',
+      utm_campaign: p.get('utm_campaign') || '',
+      utm_content: p.get('utm_content') || '',
+      utm_term: p.get('utm_term') || '',
+      gclid: p.get('gclid') || '',
+      landing_page: location.pathname + location.search,
+    };
+    try {
+      const stored = JSON.parse(sessionStorage.getItem('dcr_campaign') || '{}');
+      Object.keys(vals).forEach(k => { if (!vals[k] && stored[k]) vals[k] = stored[k]; });
+      sessionStorage.setItem('dcr_campaign', JSON.stringify(vals));
+    } catch (e) {}
+    this.campaign = vals;
+    const fill = () => document.querySelectorAll('[data-utm]').forEach(el => {
+      el.value = vals[el.getAttribute('data-utm')] || '';
+    });
+    fill();
+    setTimeout(fill, 1200);
+  }
+
+  onPhoneClick = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'phone_click', contact_method: 'tel' });
   };
 
   pick = (pkg) => {
     this.setState({ pkg });
-    const el = document.getElementById('date');
-    if (!el) return;
-    const header = document.querySelector('header');
-    const offset = header ? header.getBoundingClientRect().height : 0;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+    this.scrollToId('date');
   };
 
   DANCE_FLOORS = [
@@ -840,11 +1021,22 @@ class Component extends DCLogic {
       if (failed) { this.setState({ sent: true }); return; }
     }
 
+    const c = this.campaign || {};
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'date_check_submit', form_name: 'corporate-date-check' });
+    window.dataLayer.push({
+      event: 'generate_lead',
+      form_name: 'corporate-date-check',
+      utm_source: c.utm_source || '',
+      utm_medium: c.utm_medium || '',
+      utm_campaign: c.utm_campaign || '',
+    });
 
     const data = new FormData(form);
     data.delete('company_website');
+    /* The hidden inputs live inside an async-mounted section, so set the
+       campaign values here rather than trusting a mount-time DOM write. */
+    Object.keys(c).forEach(k => data.set(k, c[k] || ''));
     data.append('human_verified', 'true');
     data.append('_subject', 'New corporate inquiry — parkcityutahapres.com');
     data.append('_template', 'table');
@@ -876,6 +1068,8 @@ class Component extends DCLogic {
       markHuman: this.markHuman,
       videoRef: this.videoRef,
       toggleVideo: this.toggleVideo,
+      onHeroTap: this.onHeroTap,
+      onPhoneClick: this.onPhoneClick,
       videoBtnLabel: this.state.videoPaused ? 'Play video' : 'Pause video',
       packages: this.PACKAGES,
       pkg: this.state.pkg || 'Not sure yet',
