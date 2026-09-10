@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Corporate Event DJ — Park City &amp; Deer Valley | DJ Cam Reeve</title>
-<meta name="description" content="Après energy for corporate afterparties, holiday parties and galas in Park City and Deer Valley. Transparent pricing. Check your date.">
+<meta name="description" content="Après energy for corporate afterparties, holiday parties and galas in Park City and Deer Valley. Check your date.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://parkcityutahapres.com/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +32,58 @@
   gtag('config', 'AW-18420934132');
   </script>
   <!-- End Google tag -->
+  <script>
+  /* Anchor scrolling, deliberately outside the component runtime.
+     This registers at parse time so "Check your date" works as soon as the
+     sections exist, instead of waiting on React + Babel to finish compiling.
+     Two-argument scrollTo only: scrollTo({behavior:'instant'}) throws a
+     TypeError on older iOS Safari, which silently killed the handler. */
+  (function () {
+    if (window.__dcrAnchors) return;
+    window.__dcrAnchors = true;
+
+    function target(id) {
+      var el = document.getElementById(id);
+      if (!el) return null;
+      /* the date section resolves to the first form field, not the heading */
+      if (id === 'date') {
+        var ft = document.querySelector('[data-m="form-top"]');
+        if (ft) el = ft;
+      }
+      return el;
+    }
+
+    function go(id) {
+      var el = target(id);
+      if (!el) return false;
+      var header = document.querySelector('header');
+      var offset = (header ? header.getBoundingClientRect().height : 84) + 16;
+      var top = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0) - offset;
+      if (top < 0) top = 0;
+      window.scrollTo(0, top);
+      return true;
+    }
+    window.__dcrGo = go;
+
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      if (!go(id)) return;
+      e.preventDefault();
+      try { history.replaceState(null, '', '#' + id); } catch (err) {}
+    }, true);
+
+    /* a cold load on /#date needs the same treatment, and the sections mount late */
+    if (location.hash.length > 1) {
+      var id = location.hash.slice(1), tries = 0;
+      var t = setInterval(function () {
+        if (go(id) || ++tries > 40) clearInterval(t);
+      }, 100);
+    }
+  })();
+  </script>
   <link rel="stylesheet" href="ds/tokens/fonts.css">
   <link rel="stylesheet" href="ds/tokens/colors.css">
   <link rel="stylesheet" href="ds/tokens/typography.css">
@@ -52,7 +104,7 @@
     .theme-corporate { --text-muted: #8A8A8A; }
     .om-skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--dcr-white); color: var(--dcr-black); padding: 14px 20px; font-family: var(--font-wide); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; }
     .om-skip:focus { left: 0; }
-    #top, #production, #live, #pricing, #results, #date { scroll-margin-top: 100px; }
+    #top, #production, #live, #results, #date { scroll-margin-top: 100px; }
     body { margin: 0; background: #000; }
     html, body { overflow-x: clip; }
     a { color: var(--accent); text-decoration: none; }
@@ -81,14 +133,6 @@
       [data-m="venues"] { flex-wrap: wrap !important; justify-content: center !important; row-gap: 8px !important; column-gap: 14px !important; }
     }
 
-/* Pricing cards: between the mobile breakpoint and ~1080px the columns get narrow
-       enough that CUSTOM BOOTS wraps to an extra line and the shared feature rows
-       step out of alignment. Hold the worst-case row heights in that band only. */
-    @media (min-width: 901px) and (max-width: 1080px) {
-      #pricing [style*="min-height: 152px"] { min-height: 184px !important; }
-      #pricing [style*="min-height: 62px"]  { min-height: 82px !important; }
-      #pricing [style*="min-height: 104px"] { min-height: 121px !important; }
-    }
 
     /* ---- Mobile. Layout only; nothing above 900px changes. ---- */
     @media (max-width: 900px) {
@@ -118,8 +162,6 @@
 
       [data-m="venues"] > span { font-size: 11px !important; }
 
-      #pricing [style*="min-height"] { min-height: 0 !important; }
-
       h2[style*="font-size: 40px"] { font-size: 30px !important; }
       h2[style*="max-width: 22ch"] { font-size: 32px !important; }
 
@@ -130,7 +172,6 @@
       #date input, #date select, #date textarea { font-size: 16px !important; }
 
       /* 44px minimum on every tappable thing */
-      #pricing button, #pricing a[style*="inline-flex"] { min-height: 46px !important; }
       footer a { min-height: 44px !important; display: inline-flex !important; align-items: center !important; }
       #top button { min-height: 44px !important; }
 
@@ -383,7 +424,7 @@
   <!-- RISK REVERSAL BAND -->
   <div style="border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: var(--sp-7) var(--page-pad);">
     <div style="max-width: var(--grid-max); margin-inline: auto; display: flex; flex-direction: column; gap: var(--sp-6);">
-      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md" tone="muted">What to know before pricing</x-import>
+      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Eyebrow" hint-size="auto,14px" size="md" tone="muted">What to know before we talk</x-import>
       <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6) var(--sp-8);">
         <div style="display: flex; flex-direction: column; gap: var(--sp-2);">
           <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-primary);">The date is locked</div>
@@ -454,173 +495,6 @@
     </div>
   </x-import>
 
-  <!-- PRICING -->
-  <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,640px" id="pricing" eyebrow="Transparent pricing" heading="A REFRESHING WAY TO GET A PRICE" level="2" top-rule="true" data-screen-label="Pricing">
-    <div style="display: flex; flex-direction: column; gap: var(--sp-7);">
-      <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.SupportText" hint-size="100%,26px" size="md" tone="secondary">Transparency from the beginning. Pick the level of involvement you want.</x-import>
-
-      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-5); align-items: stretch;">
-        <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); border-top: 1px solid var(--rule); background: var(--surface-raised);">
-          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
-            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Boots Off</div>
-            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$3200</div>
-            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Afterparty Package</div>
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">2-hour performance</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Up to 150 people</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">1 wireless mic</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20 uplights, 2 moving heads</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Hands-off music approach</div>
-            </div>
-          </div>
-          <div style="margin-top: auto; padding-top: var(--sp-5);">
-            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOff }}">Check your date</x-import>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); background: var(--surface-raised);">
-          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
-            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">Boots On</div>
-            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$4000</div>
-            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Standard DJ Package</div>
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">3-hour performance</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Up to 200</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">2 wireless mics</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20 uplights, 2 moving heads, 6 bar lights</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Involved in music curation</div>
-            </div>
-          </div>
-          <div style="margin-top: auto; padding-top: var(--sp-5);">
-            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickBootsOn }}">Check your date</x-import>
-          </div>
-        </div>
-        <div style="position: relative; display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--accent-line); box-shadow: inset 0 4px 0 0 var(--accent); background: var(--accent-wash);">
-          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
-            <div style="position: absolute; top: -11px; left: var(--sp-6); white-space: nowrap; background: var(--accent); color: var(--accent-on); font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; padding: 5px 10px;">Most popular</div>
-            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--accent);">Après Live Fusion</div>
-            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$5300</div>
-            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">DJ + Saxophone</div>
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">3-hour performance</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Up to 200</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">2 wireless mics</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20 uplights, 2 moving heads, 6 bar lights</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Involved in music curation</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Live Performers</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Saxophonist</div>
-            </div>
-          </div>
-          <div style="margin-top: auto; padding-top: var(--sp-5);">
-            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="accent" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickApresLive }}">Check your date</x-import>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: var(--sp-5); padding: var(--sp-6); border: 1px solid var(--rule); background: var(--surface-raised);">
-          <div style="display: flex; flex-direction: column; gap: var(--sp-2); min-height: 152px;">
-            <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: var(--fs-label-sm); letter-spacing: var(--ls-label); color: var(--text-muted);">CUSTOM BOOTS</div>
-            <div style="font-family: var(--font-display); text-transform: uppercase; font-size: 44px; line-height: 1; letter-spacing: var(--ls-display); color: var(--text-primary);">$4500–20k</div>
-            <div style="font-family: var(--font-support); font-weight: 300; font-size: var(--fs-body); line-height: 1.4; letter-spacing: 0.02em; color: var(--text-secondary);">Detailed Approach</div>
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Performance</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Customized performance time</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">DJ Booth</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Included</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Sound System</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">200 –2,000 people</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 62px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Microphones</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Wireless mics as needed</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 104px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Lighting</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">20–100 uplights, 1–60 pinspots, stage wash, pixel bars, and more</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Music</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Involved in music curation</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Enhancements</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Karaoke, projectors and screens, pipe &amp; drape, TVs, staging, video wall, confidence monitors, and more</div>
-            </div>
-            <div style="border-top: 1px solid var(--rule); padding-block: var(--sp-3); min-height: 84px; display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-family: var(--font-wide); font-weight: 600; font-stretch: 125%; text-transform: uppercase; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted);">Live Performers</div>
-              <div style="font-family: var(--font-text); font-size: var(--fs-body-sm); line-height: 1.4; color: var(--text-secondary);">Sax, violinist, drummer, guitarist, pianist</div>
-            </div>
-          </div>
-          <div style="margin-top: auto; padding-top: var(--sp-5);">
-            <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Button" hint-size="100%,48px" variant="outline" size="sm" block="{{ true }}" as="button" type="button" onClick="{{ pickCustom }}">Check your date</x-import>
-          </div>
-        </div>
-      </div>
-    </div>
-  </x-import>
-
   <!-- QUESTIONS PLANNERS ASK -->
   <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Section" hint-size="100%,560px" eyebrow="Before you ask" heading="GET ANSWERS" level="2" top-rule="true" data-screen-label="FAQ">
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--sp-8); align-content: start;">
@@ -648,7 +522,7 @@
         <div style="display: flex; flex-direction: column; gap: var(--sp-4);">
           <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-top: 1px solid var(--rule); padding-top: var(--sp-4);">
             <div style="flex: none; font-family: var(--font-display); font-size: 22px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent);">01</div>
-            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">Give as much information as you can, to verify scope of work falls within the package you selected.</div>
+            <div style="font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.5; color: var(--text-primary);">Give as much information as you can about the scope of your event.</div>
           </div>
           <div style="display: flex; align-items: baseline; gap: var(--sp-4); border-top: 1px solid var(--rule); padding-top: var(--sp-4);">
             <div style="flex: none; font-family: var(--font-display); font-size: 22px; line-height: 1; letter-spacing: var(--ls-display); color: var(--accent);">02</div>
@@ -698,7 +572,6 @@
 
             <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5);">
               <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Select" hint-size="100%,74px" id="type" name="event_type" label="Event type *" options="{{ eventTypes }}" value="{{ eventType }}" onChange="{{ onEventTypeChange }}"></x-import>
-              <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Select" hint-size="100%,74px" id="package" name="package" label="Package" options="{{ packages }}" value="{{ pkg }}" onChange="{{ onPkgChange }}"></x-import>
               <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="phone" name="phone" label="Phone *" type="tel" placeholder="(999) 999-9999"></x-import>
               <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="email" name="email" label="Email *" type="email" required="{{ true }}"></x-import>
               <x-import component-from-global-scope="DJCamReeveDesignSystem_bbc5c6.Input" hint-size="100%,74px" id="date-field" name="event_date" label="Date *" type="date" required="{{ true }}"></x-import>
@@ -802,13 +675,6 @@ class Component extends DCLogic {
     'Park City Mountain', 'High West', 'The St. Regis',
   ];
 
-  PACKAGES = [
-    'Not sure yet',
-    'Boots Off · Afterparty · Up to 2 hours · $3200',
-    'Boots On · Standard DJ · Up to 3 hours · $4000',
-    'Après Live Fusion · DJ + Saxophone · Up to 3 hours · $5300',
-    'Custom Boots · Detailed Approach · $4500–20k',
-  ];
 
   videoRef = React.createRef();
   MOBILE = '(max-width: 900px)';
@@ -816,7 +682,6 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.captureCampaign();
-    this.bindAnchors();
     this.deferEmbeds();
     this.startHeroVideo();
     this.bindStickyCta();
@@ -824,7 +689,6 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     clearInterval(this._embedTimer);
-    document.removeEventListener('click', this._onAnchorClick, true);
     window.removeEventListener('scroll', this._onScroll);
     window.removeEventListener('scroll', this._queueScan);
     window.removeEventListener('resize', this._queueScan);
@@ -835,35 +699,9 @@ class Component extends DCLogic {
      seven embeds settling, so links moved a few pixels and stopped. Jump
      instantly instead, and land on the thing the visitor came for: the
      date section resolves to the first form field, not the heading. */
-  scrollToId = (id) => {
-    let el = document.getElementById(id);
-    if (!el) return false;
-    if (id === 'date') el = document.querySelector('[data-m="form-top"]') || el;
-    const header = document.querySelector('header');
-    const offset = (header ? header.getBoundingClientRect().height : 84) + 16;
-    const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - offset);
-    window.scrollTo({ top, behavior: 'instant' });
-    return true;
-  };
-
-  _onAnchorClick = (e) => {
-    const a = e.target.closest && e.target.closest('a[href^="#"]');
-    if (!a) return;
-    const id = a.getAttribute('href').slice(1);
-    if (!id) return;
-    if (!this.scrollToId(id)) return;
-    e.preventDefault();
-    try { history.replaceState(null, '', '#' + id); } catch (err) {}
-  };
-
-  bindAnchors() {
-    document.addEventListener('click', this._onAnchorClick, true);
-    /* a cold load on /#date has the same problem */
-    if (location.hash.length > 1) {
-      const id = location.hash.slice(1);
-      requestAnimationFrame(() => this.scrollToId(id));
-    }
-  }
+  /* Anchors are owned by the inline script in <helmet>, which registers at
+     parse time rather than waiting on this class to mount. */
+  scrollToId = (id) => (window.__dcrGo ? window.__dcrGo(id) : false);
 
   /* ---- embeds --------------------------------------------------------
      Seven third-party players were loading on first paint, which is most
@@ -978,10 +816,6 @@ class Component extends DCLogic {
     window.dataLayer.push({ event: 'phone_click', contact_method: 'tel' });
   };
 
-  pick = (pkg) => {
-    this.setState({ pkg });
-    this.scrollToId('date');
-  };
 
   DANCE_FLOORS = [
     'Bangers Only 🔥',
@@ -1071,18 +905,11 @@ class Component extends DCLogic {
       onHeroTap: this.onHeroTap,
       onPhoneClick: this.onPhoneClick,
       videoBtnLabel: this.state.videoPaused ? 'Play video' : 'Pause video',
-      packages: this.PACKAGES,
-      pkg: this.state.pkg || 'Not sure yet',
-      onPkgChange: (e) => this.setState({ pkg: e.target.value }),
       eventType: this.state.eventType || 'Corporate Event',
       onEventTypeChange: (e) => this.setState({ eventType: e.target.value }),
       danceFloors: this.DANCE_FLOORS,
       danceFloor: this.state.danceFloor || '',
       onDanceFloorChange: (e) => this.setState({ danceFloor: e.target.value }),
-      pickBootsOff: () => this.pick(this.PACKAGES[1]),
-      pickBootsOn: () => this.pick(this.PACKAGES[2]),
-      pickApresLive: () => this.pick(this.PACKAGES[3]),
-      pickCustom: () => this.pick(this.PACKAGES[4]),
       heroHeadlineStyle: { style: { fontSize: 'min(104px, 6.1vw)', whiteSpace: 'nowrap' } },
 
       showRepel: this.props.showRepel ?? true,
@@ -1091,7 +918,6 @@ class Component extends DCLogic {
       notSent: !this.state.sent,
       nav: [
         { label: 'Music Path', href: '#production' },
-        { label: 'Pricing', href: '#pricing' },
         { label: 'Results', href: '#results' },
       ],
       venueItems: this.VENUES.map((name, i) => ({ name, sep: i < this.VENUES.length - 1 ? '·' : '' })),
